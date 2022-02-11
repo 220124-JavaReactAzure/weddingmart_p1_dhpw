@@ -5,6 +5,8 @@ Models
 		Attendee
 	Wedding
 	Asset
+	MealOrder
+	MealOrderPlusOne
 	
 Services
 	User
@@ -13,6 +15,8 @@ Services
 		Attendee
 	Wedding
 	Asset
+	MealOrder
+	MealOrderPlusOne
 	
 Web
 	Util
@@ -25,6 +29,8 @@ Web
 		Betrothed
 		Attendee
 		Asset
+		MealOrder
+		MealOrderPlusOne
 	
 Util
 	Datasource
