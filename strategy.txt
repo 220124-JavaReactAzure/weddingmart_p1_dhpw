@@ -1,0 +1,12 @@
+Branching Strategy and Feature Completion
+
+phil/feature_name
+darrell/feature_name
+
+A feature is considered complete when:
+	it has a working REST endpoint
+	its service object code is covered by JUnit tests
+	the JUnit tests use Mockito for any external objects
+	the JUnit tests all pass
+	
+Once a feature is complete we'll do a code review and then merge with main
