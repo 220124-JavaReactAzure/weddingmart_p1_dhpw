@@ -1,0 +1,63 @@
+pk = primary key
+cpk = composite primary key
+fk = foreign key
+
+wedding
+	pk int id
+	double budget
+	date wedding_date
+	date rsvp_by_date
+	
+asset
+	pk int id
+	varchar email
+	varchar name
+	varchar phone
+	double price
+	varchar address
+	fk int type_id
+	
+asset_type
+	pk int id
+	varchar description (caterer, florist, photographer, musician, venue)
+	
+asset_booking
+	cpk fk int asset_id
+	cpk fk int wedding_id
+	date booking_date
+	
+user
+	pk varchar email
+	varchar username
+	varchar password
+	varchar phone
+	
+employee
+	pk fk user_email
+	
+betrothed
+	pk fk user_email
+	wedding_id
+	
+attendee
+	cpk fk user_email
+	cpk fk wedding_id
+	rsvp_answer (boolean, default null, true for yes, false for no)
+	plus_one_rsvp (boolean, default null, true for yes, false for no)
+
+meal_choice
+	pk id
+	description (meat, fish, veggie)
+	
+meal_order
+	cpk fk user_email
+	cpk fk wedding_id
+	lunch_choice
+	dinner_choice
+	
+meal_order_plus_one
+	cpk fk user_email
+	cpk fk wedding_id
+	lunch_choice
+	dinner_choice
+	
