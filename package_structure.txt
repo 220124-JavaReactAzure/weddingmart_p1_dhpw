@@ -1,0 +1,31 @@
+Models
+	User
+		Employee
+		Betrothed
+		Attendee
+	Wedding
+	Asset
+	
+Services
+	User
+		Employee
+		Betrothed
+		Attendee
+	Wedding
+	Asset
+	
+Web
+	Util
+		ContextLoaderListener
+	Dto
+		feature_name_dto for each feature
+	Servlets
+		User
+		Employee
+		Betrothed
+		Attendee
+		Asset
+	
+Util
+	Datasource
+		ConnectionFactory
