@@ -22,7 +22,7 @@ Web
 	Util
 		ContextLoaderListener
 	Dto
-		feature_name_dto for each feature
+		FeatureNameDTO for each feature
 	Servlets
 		User
 		Employee
