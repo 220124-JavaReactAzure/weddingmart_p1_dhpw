@@ -1,8 +1,8 @@
 User
 	Register
 	Edit contact info
-	Create wedding
-	Cancel wedding
+	Create wedding (create entry in wedding table, add this user's email and that wedding id to betrothed table)
+	Cancel wedding (delete from wedding table, should cascade from betrothed table)
 	
 Admin
 	Add User to employee table
@@ -14,10 +14,11 @@ Employee
 	Delete Asset
 	
 Betrothed
+	Add another user (by email address) to be Betrothed on this wedding
 	Set Budget
 	View Current Cost (calculated by all Booking entries for wedding)
 	View Asssets Available in Date Range (can view all or just a certain type of asset)
-	Choose Date (user is warned that all bookings will be deleted if they change the date after choosing it)
+	Choose Date (all bookings will be deleted if they change the date after choosing it)
 	Choose RSVP by Date
 	Book Asset (if asset is available on chosen date)
 	Invite Attendee (by email address)
@@ -25,6 +26,6 @@ Betrothed
 Attendee
 	View Venue Info
 	RSVP (cannot be set to true after RSVP by Date has passed)
-	Choose Lunch and Dinner options
+	Choose Lunch and Dinner options (will stay null if RSVP is not true)
 	Plus One RSVP (cannot be set to true after RSVP by Date has passed)
-	Choos Plus One Lunch and Dinner options
+	Choos Plus One Lunch and Dinner options (will stay null if plus_one_RSVP is not true)
