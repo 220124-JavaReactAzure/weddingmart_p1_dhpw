@@ -1,8 +1,4 @@
-*.metadata
+bin/
+resources/
+.metadata/
 *.class
-*.log
-*.properties
-*.bak
-*.classpath
-*.factorypath
-*.project
