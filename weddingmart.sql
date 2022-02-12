@@ -132,6 +132,7 @@ CREATE TABLE weddingmart.dbo.betrothed (
 
 CREATE TABLE weddingmart.dbo.employee (
 	user_email varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	is_manager bit DEFAULT 0 NOT NULL,
 	CONSTRAINT PK__employee__B0FBA213D56BC784 PRIMARY KEY (user_email),
 	CONSTRAINT employee_FK FOREIGN KEY (user_email) REFERENCES weddingmart.dbo.app_users(email) ON DELETE CASCADE ON UPDATE CASCADE
 );
