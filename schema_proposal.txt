@@ -4,7 +4,7 @@ fk = foreign key
 
 wedding
 	pk int id
-	double budget
+	float budget
 	date wedding_date
 	date rsvp_by_date
 	
@@ -13,7 +13,7 @@ asset
 	varchar email
 	varchar name
 	varchar phone
-	double price
+	float price
 	varchar address
 	fk int type_id
 	
@@ -26,7 +26,7 @@ asset_booking
 	cpk fk int wedding_id
 	date booking_date
 	
-user
+app_users
 	pk varchar email
 	varchar username
 	varchar password
@@ -42,8 +42,8 @@ betrothed
 attendee
 	cpk fk user_email
 	cpk fk wedding_id
-	rsvp_answer (boolean, default null, true for yes, false for no)
-	plus_one_rsvp (boolean, default null, true for yes, false for no)
+	rsvp_answer (bit, default null, 1 for yes, 0 for no)
+	plus_one_rsvp (boolean, default null, 1 for yes, 0 for no)
 
 meal_choice
 	pk id
