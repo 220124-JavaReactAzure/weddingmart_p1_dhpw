@@ -3,15 +3,13 @@ User
 	Edit contact info
 	Create wedding (create entry in wedding table, add this user's email and that wedding id to betrothed table)
 	Cancel wedding (delete from wedding table, should cascade from betrothed table)
-	
-Admin
-	Add User to employee table
-	Remove User from employee table
 
 Employee
 	Add Asset
 	Modify Asset
 	Delete Asset
+	Add another User to the Employee table (if manager bit is 1)
+	Remove a User from the Employee table (if manager bit is 1)
 	
 Betrothed
 	Add another user (by email address) to be Betrothed on this wedding
@@ -24,8 +22,9 @@ Betrothed
 	Invite Attendee (by email address)
 	
 Attendee
+	View list of invites (Attendee can be invited to multiple weddings)
 	View Venue Info
-	RSVP (cannot be set to true after RSVP by Date has passed)
-	Choose Lunch and Dinner options (will stay null if RSVP is not true)
-	Plus One RSVP (cannot be set to true after RSVP by Date has passed)
-	Choos Plus One Lunch and Dinner options (will stay null if plus_one_RSVP is not true)
+	RSVP (cannot be set to 1 after RSVP by Date has passed)
+	Choose Lunch and Dinner options (will stay null if RSVP is 0)
+	Plus One RSVP (cannot be set to 1 after RSVP by Date has passed)
+	Choose Plus One Lunch and Dinner options (will stay null if plus_one_RSVP is 0)
