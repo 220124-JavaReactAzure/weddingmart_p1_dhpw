@@ -1,12 +1,12 @@
 Servlets
-/user POST GET UPDATE DELETE
+/user POST GET PUT DELETE
 /employee POST DELETE
-/wedding POST GET UPDATE DELETE
-/asset POST GET UPDATE DELETE
+/wedding POST GET PUT DELETE
+/asset POST GET PUT DELETE
 /asset_booking POST DELETE
-/attendee POST GET UPDATE DELETE
-/meal_order POST
-/meal_order_plus_one POST
+/attendee POST GET PUT DELETE
+/meal_order POST PUT
+/meal_order_plus_one POST PUT
 
 User
 	Register
@@ -16,7 +16,7 @@ User
 	View contact info
 		/user GET
 	Edit contact info
-		/user UPDATE
+		/user PUT
 	Create wedding (create entry in wedding table, add this user's email and that wedding id to betrothed table)
 		/wedding POST
 	Cancel wedding (delete from wedding table, should cascade from betrothed table)
@@ -28,7 +28,7 @@ Employee
 	Add Asset
 		/asset POST
 	Modify Asset
-		/asset UPDATE
+		/asset PUT
 	Delete Asset
 		/asset DELETE
 	Add another User to the Employee table (if manager bit is 1)
@@ -40,15 +40,15 @@ Betrothed
 	Add another user (by email address) to be Betrothed on this wedding
 		/attendee POST
 	Set Budget
-		/wedding UPDATE
+		/wedding PUT
 	View Current Cost (calculated by all Booking entries for wedding)
 		/asset_booking GET
 	View Asssets Available in Date Range (can view all or just a certain type of asset)
 		/asset GET
 	Choose Date (all bookings will be deleted if they change the date after choosing it)
-		/wedding UPDATE
+		/wedding PUT
 	Choose RSVP by Date
-		/wedding UPDATE
+		/wedding PUT
 	Book Asset (if asset is available on chosen date)
 		/asset_booking POST
 	Cancel Asset
@@ -68,10 +68,10 @@ Attendee
 	View Venue Info
 		/asset GET
 	RSVP (cannot be set to 1 after RSVP by Date has passed)
-		/attendee UPDATE
+		/attendee PUT
 	Choose Lunch and Dinner options (will stay null if RSVP is 0)
 		/meal_order POST
 	Plus One RSVP (cannot be set to 1 after RSVP by Date has passed)
-		/attendee UPDATE
+		/attendee PUT
 	Choose Plus One Lunch and Dinner options (will stay null if plus_one_RSVP is 0)
 		/meal_order_plus_one POST
