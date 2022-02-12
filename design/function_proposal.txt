@@ -1,30 +1,77 @@
+Servlets
+/user POST GET UPDATE DELETE
+/employee POST DELETE
+/wedding POST GET UPDATE DELETE
+/asset POST GET UPDATE DELETE
+/asset_booking POST DELETE
+/attendee POST GET UPDATE DELETE
+/meal_order POST
+/meal_order_plus_one POST
+
 User
 	Register
+		/user POST
+	Login
+		/user/login POST
+	View contact info
+		/user GET
 	Edit contact info
+		/user UPDATE
 	Create wedding (create entry in wedding table, add this user's email and that wedding id to betrothed table)
+		/wedding POST
 	Cancel wedding (delete from wedding table, should cascade from betrothed table)
+		/wedding DELETE
 
 Employee
+	View Assets(s)
+		/asset GET
 	Add Asset
+		/asset POST
 	Modify Asset
+		/asset UPDATE
 	Delete Asset
+		/asset DELETE
 	Add another User to the Employee table (if manager bit is 1)
+		/employee POST
 	Remove a User from the Employee table (if manager bit is 1)
+		/employee DELETE
 	
 Betrothed
 	Add another user (by email address) to be Betrothed on this wedding
+		/attendee POST
 	Set Budget
+		/wedding UPDATE
 	View Current Cost (calculated by all Booking entries for wedding)
+		/asset_booking GET
 	View Asssets Available in Date Range (can view all or just a certain type of asset)
+		/asset GET
 	Choose Date (all bookings will be deleted if they change the date after choosing it)
+		/wedding UPDATE
 	Choose RSVP by Date
+		/wedding UPDATE
 	Book Asset (if asset is available on chosen date)
+		/asset_booking POST
+	Cancel Asset
+		/asset_booking DELETE
 	Invite Attendee (by email address)
+		/attendee POST
+	Disinvite Attendee (by email address)
+		/attendee DELETE
+	View wedding summary
+		/wedding GET
+	View attendees
+		/attendee GET
 	
 Attendee
 	View list of invites (Attendee can be invited to multiple weddings)
+		/attendee GET
 	View Venue Info
+		/asset GET
 	RSVP (cannot be set to 1 after RSVP by Date has passed)
+		/attendee UPDATE
 	Choose Lunch and Dinner options (will stay null if RSVP is 0)
+		/meal_order POST
 	Plus One RSVP (cannot be set to 1 after RSVP by Date has passed)
+		/attendee UPDATE
 	Choose Plus One Lunch and Dinner options (will stay null if plus_one_RSVP is 0)
+		/meal_order_plus_one POST
