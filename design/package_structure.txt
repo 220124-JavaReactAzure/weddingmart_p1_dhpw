@@ -11,14 +11,14 @@ Models
 	
 Services
 	Users
-		User
-		Employee
-		Betrothed
-		Attendee
-	Wedding
-	Asset
-	MealOrder
-	MealOrderPlusOne
+		UserService
+		EmployeeService
+		BetrothedService
+		AttendeeService
+	WeddingService
+	AssetService
+	MealOrderService
+	MealOrderPlusOneService
 	
 Web
 	Util
@@ -27,14 +27,14 @@ Web
 		FeatureNameDTO for each feature
 	Servlets
 		Users
-			User
-			Employee
-			Betrothed
-			Attendee
-		Wedding
-		Asset
-		MealOrder
-		MealOrderPlusOne
+			UserServlet
+			EmployeeSerlvet
+			BetrothedServlet
+			AttendeeServlet
+		WeddingServlet
+		AssetServlet
+		MealOrderServlet
+		MealOrderPlusOneSerlvet
 	
 Util
 	Datasource
