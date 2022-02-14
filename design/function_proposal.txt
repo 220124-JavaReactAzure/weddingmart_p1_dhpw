@@ -1,6 +1,7 @@
 Servlets
 /user POST GET PUT DELETE
 /employee POST DELETE
+/betrothed POST
 /wedding POST GET PUT DELETE
 /asset POST GET PUT DELETE
 /asset_booking POST DELETE
@@ -38,7 +39,7 @@ Employee
 	
 Betrothed
 	Add another user (by email address) to be Betrothed on this wedding
-		/attendee POST
+		/betrothed POST
 	Set Budget
 		/wedding PUT
 	View Current Cost (calculated by all Booking entries for wedding)
