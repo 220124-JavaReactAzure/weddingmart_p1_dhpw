@@ -40,8 +40,9 @@ betrothed
 	wedding_id
 	
 attendee
-	cpk fk user_email
-	cpk fk wedding_id
+	pk int id
+	fk user_email
+	fk wedding_id
 	rsvp_answer (bit, default null, 1 for yes, 0 for no)
 	plus_one_rsvp (boolean, default null, 1 for yes, 0 for no)
 
@@ -50,14 +51,12 @@ meal_choice
 	description (meat, fish, veggie)
 	
 meal_order
-	cpk fk user_email
-	cpk fk wedding_id
+	pk fk attendee_id
 	lunch_choice
 	dinner_choice
 	
 meal_order_plus_one
-	cpk fk user_email
-	cpk fk wedding_id
+	pk fk attendee_id
 	lunch_choice
 	dinner_choice
 	

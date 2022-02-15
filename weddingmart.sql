@@ -103,10 +103,13 @@ CREATE TABLE weddingmart.dbo.attendee (
 	wedding_id int NOT NULL,
 	rsvp_answer bit NULL,
 	plus_one_rsvp bit NULL,
-	CONSTRAINT PK__attendee__7E76DE08E8925FDF PRIMARY KEY (user_email,wedding_id),
+	id int IDENTITY(1,1) NOT NULL,
+	CONSTRAINT PK__attendee__3213E83FE806DD57 PRIMARY KEY (id),
+	CONSTRAINT attendee_UN UNIQUE (wedding_id,user_email),
 	CONSTRAINT attendee_FK_user_email FOREIGN KEY (user_email) REFERENCES weddingmart.dbo.app_users(email) ON DELETE CASCADE ON UPDATE CASCADE,
 	CONSTRAINT attendee_FK_wedding_id FOREIGN KEY (wedding_id) REFERENCES weddingmart.dbo.wedding(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+CREATE UNIQUE NONCLUSTERED INDEX attendee_UN ON weddingmart.dbo.attendee (wedding_id, user_email);
 
 
 -- weddingmart.dbo.betrothed definition
@@ -145,12 +148,11 @@ CREATE TABLE weddingmart.dbo.employee (
 -- DROP TABLE weddingmart.dbo.meal_order;
 
 CREATE TABLE weddingmart.dbo.meal_order (
-	user_email varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-	wedding_id int NOT NULL,
 	lunch_choice int NULL,
 	dinner_choice int NULL,
-	CONSTRAINT PK__meal_ord__7E76DE0819DE2766 PRIMARY KEY (user_email,wedding_id),
-	CONSTRAINT meal_order_FK FOREIGN KEY (user_email,wedding_id) REFERENCES weddingmart.dbo.attendee(user_email,wedding_id) ON DELETE CASCADE ON UPDATE CASCADE,
+	attendee_id int NOT NULL,
+	CONSTRAINT meal_order_PK PRIMARY KEY (attendee_id),
+	CONSTRAINT meal_order_FK FOREIGN KEY (attendee_id) REFERENCES weddingmart.dbo.attendee(id) ON DELETE CASCADE ON UPDATE CASCADE,
 	CONSTRAINT meal_order_FK_dinner FOREIGN KEY (dinner_choice) REFERENCES weddingmart.dbo.meal_choice(id),
 	CONSTRAINT meal_order_FK_lunch FOREIGN KEY (lunch_choice) REFERENCES weddingmart.dbo.meal_choice(id)
 );
@@ -163,12 +165,11 @@ CREATE TABLE weddingmart.dbo.meal_order (
 -- DROP TABLE weddingmart.dbo.meal_order_plus_one;
 
 CREATE TABLE weddingmart.dbo.meal_order_plus_one (
-	user_email varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-	wedding_id int NOT NULL,
 	lunch_choice int NULL,
 	dinner_choice int NULL,
-	CONSTRAINT PK__meal_ord__7E76DE089EC6D185 PRIMARY KEY (user_email,wedding_id),
-	CONSTRAINT meal_order_plus_one_FK FOREIGN KEY (user_email,wedding_id) REFERENCES weddingmart.dbo.attendee(user_email,wedding_id) ON DELETE CASCADE ON UPDATE CASCADE,
+	attendee_id int NOT NULL,
+	CONSTRAINT meal_order_plus_one_PK PRIMARY KEY (attendee_id),
+	CONSTRAINT meal_order_plus_one_FK FOREIGN KEY (attendee_id) REFERENCES weddingmart.dbo.attendee(id) ON DELETE CASCADE ON UPDATE CASCADE,
 	CONSTRAINT meal_order_plus_one_FK_dinner FOREIGN KEY (dinner_choice) REFERENCES weddingmart.dbo.meal_choice(id),
 	CONSTRAINT meal_order_plus_one_FK_lunch FOREIGN KEY (lunch_choice) REFERENCES weddingmart.dbo.meal_choice(id)
 );
