@@ -2,13 +2,34 @@ package com.revature.weddingmart.models;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="asset")
 public class Asset {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column()
 	private int id;
+	@Column()
 	private String email;
+	@Column()
 	private String name;
+	@Column()
 	private String phone;
+	@Column()
 	private double price;
+	@Column()
 	private String address;
+	@OneToOne(optional=false)
+    @JoinColumn(name="type_id", unique=false, nullable=false, updatable=true)
 	private AssetType type;
 
 	public int getId() {
@@ -85,59 +106,5 @@ public class Asset {
 				&& Objects.equals(name, other.name) && Objects.equals(phone, other.phone)
 				&& Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price)
 				&& Objects.equals(type, other.type);
-	}
-
-	private class AssetType {
-		private int id;
-		private String description;
-
-		public int getId() {
-			return id;
-		}
-
-		public void setId(int id) {
-			this.id = id;
-		}
-
-		public String getDescription() {
-			return description;
-		}
-
-		public void setDescription(String description) {
-			this.description = description;
-		}
-
-		@Override
-		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + getEnclosingInstance().hashCode();
-			result = prime * result + Objects.hash(description, id);
-			return result;
-		}
-
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			AssetType other = (AssetType) obj;
-			if (!getEnclosingInstance().equals(other.getEnclosingInstance()))
-				return false;
-			return Objects.equals(description, other.description) && id == other.id;
-		}
-
-		private Asset getEnclosingInstance() {
-			return Asset.this;
-		}
-
-		@Override
-		public String toString() {
-			return "AssetType [id=" + id + ", description=" + description + "]";
-		}
-
 	}
 }
