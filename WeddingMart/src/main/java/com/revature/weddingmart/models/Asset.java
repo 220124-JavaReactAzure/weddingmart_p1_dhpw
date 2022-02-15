@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -28,7 +28,7 @@ public class Asset {
 	private double price;
 	@Column()
 	private String address;
-	@OneToOne(optional=false)
+	@ManyToOne(optional=false)
     @JoinColumn(name="type_id", unique=false, nullable=false, updatable=true)
 	private AssetType type;
 

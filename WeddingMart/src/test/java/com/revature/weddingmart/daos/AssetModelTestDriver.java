@@ -17,12 +17,12 @@ public class AssetModelTestDriver {
 			System.out.println(a.getDescription());
 		}
 		
-		AssetType venue = assetTypeDAO.getByDescription("venue");
-		asset.setAddress("123 Anywhere Street");
-		asset.setEmail("admin@venue.com");
-		asset.setName("Venue");
-		asset.setPhone("1 (919) 123 4567");
-		asset.setPrice(300.00);
+		AssetType venue = assetTypeDAO.getByDescription("caterer");
+		asset.setAddress("456 Somewhere Drive");
+		asset.setEmail("admin@venue.net");
+		asset.setName("Bouncy House");
+		asset.setPhone("1 (919) 999 5555");
+		asset.setPrice(500.00);
 		asset.setType(venue);
 		
 		assetDAO.addAsset(asset);
