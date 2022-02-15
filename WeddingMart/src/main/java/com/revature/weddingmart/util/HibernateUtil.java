@@ -11,6 +11,12 @@ import org.hibernate.service.ServiceRegistry;
 
 import com.revature.weddingmart.models.Asset;
 import com.revature.weddingmart.models.AssetType;
+import com.revature.weddingmart.models.MealChoice;
+import com.revature.weddingmart.models.MealOrder;
+import com.revature.weddingmart.models.MealOrderPlusOne;
+import com.revature.weddingmart.models.Wedding;
+import com.revature.weddingmart.models.users.Attendee;
+import com.revature.weddingmart.models.users.Betrothed;
 
 public class HibernateUtil {
 
@@ -29,6 +35,12 @@ public class HibernateUtil {
 			// add annotated classes
 			configuration.addAnnotatedClass(Asset.class);
 			configuration.addAnnotatedClass(AssetType.class);
+			configuration.addAnnotatedClass(MealChoice.class);
+			configuration.addAnnotatedClass(MealOrder.class);
+			configuration.addAnnotatedClass(MealOrderPlusOne.class);
+			configuration.addAnnotatedClass(Wedding.class);
+			configuration.addAnnotatedClass(Attendee.class);
+			configuration.addAnnotatedClass(Betrothed.class);
 	
 			// ServiceRegistry
 			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();

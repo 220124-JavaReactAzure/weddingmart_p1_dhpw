@@ -2,8 +2,19 @@ package com.revature.weddingmart.models.users;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="employee")
 public class Employee {
+	@OneToOne(optional=false)
+    @JoinColumn(name="type_id", unique=false, nullable=false, updatable=true)
 	private User user;
+	@Column(name = "is_manager")
 	private boolean isManager;
 
 	@Override

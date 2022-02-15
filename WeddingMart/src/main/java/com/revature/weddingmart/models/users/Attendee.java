@@ -2,13 +2,33 @@ package com.revature.weddingmart.models.users;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import com.revature.weddingmart.models.Wedding;
 
+@Entity
+@Table(name="attendee")
 public class Attendee {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column()
 	private int id;
+	@ManyToOne(optional=false)
+    @JoinColumn(name="user_email", unique=false, nullable=false, updatable=false)
 	private User user;
+	@ManyToOne(optional=false)
+    @JoinColumn(name="wedding_id", unique=false, nullable=false, updatable=false)
 	private Wedding wedding;
+	@Column(name = "rsvp_answer")
 	private boolean rsvp;
+	@Column(name = "plus_one_rsvp")
 	private boolean rsvpPlusOne;
 
 	public int getId() {

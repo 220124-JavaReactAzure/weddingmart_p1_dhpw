@@ -2,10 +2,21 @@ package com.revature.weddingmart.models.users;
 
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import com.revature.weddingmart.models.Wedding;
 
+@Entity
+@Table(name="betrothed")
 public class Betrothed {
+	@ManyToOne(optional=false)
+    @JoinColumn(name="user_email", unique=false, nullable=false, updatable=false)
 	private User user;
+	@ManyToOne(optional=false)
+    @JoinColumn(name="wedding_id", unique=false, nullable=false, updatable=false)
 	private Wedding wedding;
 
 	public User getUser() {

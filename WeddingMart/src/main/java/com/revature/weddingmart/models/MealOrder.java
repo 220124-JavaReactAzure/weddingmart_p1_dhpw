@@ -2,11 +2,25 @@ package com.revature.weddingmart.models;
 
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import com.revature.weddingmart.models.users.Attendee;
 
+@Entity
+@Table(name="meal_order")
 public class MealOrder {
+	@OneToOne(optional=false)
+    @JoinColumn(name="attendee_id", unique=false, nullable=false, updatable=true)
 	private Attendee attendee;
+	@ManyToOne(optional=true)
+    @JoinColumn(name="lunch_choice", unique=false, nullable=true, updatable=true)
 	private MealChoice lunchChoice;
+	@ManyToOne(optional=true)
+    @JoinColumn(name="dinner_choice", unique=false, nullable=true, updatable=true)
 	private MealChoice dinnerChoice;
 
 	public Attendee getAttendee() {

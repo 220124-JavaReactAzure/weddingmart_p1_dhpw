@@ -2,10 +2,22 @@ package com.revature.weddingmart.models.users;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="app_users")
 public class User {
+	@Id
+	@Column()
 	private String email;
+	@Column()
 	private String username;
+	@Column()
 	private String password;
+	@Column()
 	private String phone;
 
 	public String getEmail() {
