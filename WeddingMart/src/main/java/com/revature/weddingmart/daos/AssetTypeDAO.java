@@ -25,10 +25,8 @@ public class AssetTypeDAO {
 	public AssetType getById(int id) {
 		try {
 			Session session = HibernateUtil.getSession();
-			Query query = session.createQuery("FROM AssetType A where A.id = :id");
-			query.setParameter("id", id);
-			List<AssetType> asset_types = query.list();
-			return asset_types.get(0);
+			AssetType assetType = session.get(AssetType.class, id);
+			return assetType;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
