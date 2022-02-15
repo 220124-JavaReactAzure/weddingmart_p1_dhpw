@@ -9,6 +9,17 @@ Models
 	MealOrder
 	MealOrderPlusOne
 	
+DAOS
+	Users
+		UserDAO
+		EmployeeDAO
+		BetrothedDAO
+		AttendeeDAO
+	WeddingDAO
+	AssetDAO
+	MealOrderDAO
+	MealOrderPlusOneDAO
+
 Services
 	Users
 		UserService
