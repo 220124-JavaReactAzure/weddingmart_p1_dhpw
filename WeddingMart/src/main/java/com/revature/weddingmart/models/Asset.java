@@ -2,6 +2,7 @@ package com.revature.weddingmart.models;
 
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name="asset")
@@ -28,7 +32,8 @@ public class Asset {
 	private double price;
 	@Column()
 	private String address;
-	@ManyToOne(optional=false)
+	@ManyToOne(optional=false, cascade = CascadeType.ALL)
+	@OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="type_id", unique=false, nullable=false, updatable=true)
 	private AssetType type;
 

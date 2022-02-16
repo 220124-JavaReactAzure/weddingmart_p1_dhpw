@@ -2,12 +2,16 @@ package com.revature.weddingmart.models.users;
 
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import com.revature.weddingmart.models.Wedding;
 
@@ -17,10 +21,12 @@ public class Betrothed {
 	@Id
 	@GeneratedValue
 	private long id;
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = false, cascade = CascadeType.ALL)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "user_email", unique = false, nullable = false, updatable = false)
 	private User user;
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = false, cascade = CascadeType.ALL)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "wedding_id", unique = false, nullable = false, updatable = false)
 	private Wedding wedding;
 

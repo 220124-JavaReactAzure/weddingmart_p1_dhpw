@@ -1,14 +1,32 @@
 package com.revature.weddingmart.daos;
 
+import java.io.IOException;
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import com.revature.weddingmart.models.AssetType;
 import com.revature.weddingmart.util.HibernateUtil;
 
 public class AssetTypeDAO {
+	public AssetType addAssetType(AssetType assetType) {
+		try {
+			Session session = HibernateUtil.getSession();
+			Transaction transaction = session.beginTransaction();
+			session.save(assetType);
+			transaction.commit();
+			return assetType;
+		} catch (HibernateException | IOException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			HibernateUtil.closeSession();
+		}
+	}
+	
 	public List<AssetType> getAllAssetTypes() {
 		try {
 			Session session = HibernateUtil.getSession();
@@ -45,6 +63,32 @@ public class AssetTypeDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
+		} finally {
+			HibernateUtil.closeSession();
+		}
+	}
+	
+	public void updateAssetType(AssetType assetType) {
+		try {
+			Session session = HibernateUtil.getSession();
+			Transaction transaction = session.beginTransaction();
+			session.merge(assetType);
+			transaction.commit();
+		} catch (HibernateException | IOException e) {
+			e.printStackTrace();
+		} finally {
+			HibernateUtil.closeSession();
+		}
+	}
+
+	public void deleteAssetType(AssetType assetType) {
+		try {
+			Session session = HibernateUtil.getSession();
+			Transaction transaction = session.beginTransaction();
+			session.delete(assetType);
+			transaction.commit();
+		} catch (HibernateException | IOException e) {
+			e.printStackTrace();
 		} finally {
 			HibernateUtil.closeSession();
 		}

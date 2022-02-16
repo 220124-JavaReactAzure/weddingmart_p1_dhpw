@@ -2,6 +2,7 @@ package com.revature.weddingmart.models.users;
 
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import com.revature.weddingmart.models.Wedding;
 
@@ -21,10 +25,12 @@ public class Attendee {
 	@Column()
 	private int id;
 	@ManyToOne(optional=false)
-    @JoinColumn(name="user_email", unique=false, nullable=false, updatable=false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name="user_id", unique=false, nullable=false, updatable=false)
 	private User user;
 	@ManyToOne(optional=false)
-    @JoinColumn(name="wedding_id", unique=false, nullable=false, updatable=false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name="wedding_id", unique=false, nullable=false, updatable=true)
 	private Wedding wedding;
 	@Column(name = "rsvp_answer")
 	private boolean rsvp;

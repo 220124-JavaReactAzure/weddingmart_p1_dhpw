@@ -3,6 +3,7 @@ package com.revature.weddingmart.models;
 import java.util.Date;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,16 +12,21 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
 @Table(name = "asset_booking")
 public class AssetBooking {
 	@Id
 	@GeneratedValue
 	private long id;
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = false, cascade = CascadeType.ALL)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "asset_id", unique = false, nullable = false, updatable = false)
 	private Asset asset;
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = false, cascade = CascadeType.ALL)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "wedding_id", unique = false, nullable = false, updatable = false)
 	private Wedding wedding;
 	@Column(name = "booking_date")
