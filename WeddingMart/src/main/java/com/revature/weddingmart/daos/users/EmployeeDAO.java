@@ -14,7 +14,9 @@ public class EmployeeDAO {
 	public Employee addEmployee(Employee employee) {
 		try {
 			Session session = HibernateUtil.getSession();
+			Transaction transaction = session.beginTransaction();
 			session.save(employee);
+			transaction.commit();
 			return employee;
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();

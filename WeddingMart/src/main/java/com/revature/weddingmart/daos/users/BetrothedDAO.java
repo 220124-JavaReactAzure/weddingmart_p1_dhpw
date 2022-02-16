@@ -14,7 +14,9 @@ public class BetrothedDAO {
 	public Betrothed addBetrothed(Betrothed betrothed) {
 		try {
 			Session session = HibernateUtil.getSession();
+			Transaction transaction = session.beginTransaction();
 			session.save(betrothed);
+			transaction.commit();
 			return betrothed;
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();

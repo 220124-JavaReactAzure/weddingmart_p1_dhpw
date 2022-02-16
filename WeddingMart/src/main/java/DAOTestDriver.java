@@ -24,6 +24,16 @@ import com.revature.weddingmart.models.users.User;
 public class DAOTestDriver {
 
 	public static void main(String[] args) {
+		UserDAO userDAO = new UserDAO();
+		User user = new User();
+		user.setEmail("email");
+		user.setPassword("password");
+		user.setPhone("phone");
+		user.setUsername("username");
+		user = userDAO.addUser(user);
+		System.out.println(user);
+		userDAO.deleteUser(user);
+		
 		AssetTypeDAO assetTypeDAO = new AssetTypeDAO();
 		AssetType assetType = new AssetType();
 		assetType = assetTypeDAO.getById(1);
@@ -37,9 +47,10 @@ public class DAOTestDriver {
 		asset.setPrice(9001.99);
 		asset.setType(assetType);
 		asset = assetDAO.addAsset(asset);
+		System.out.println(asset);
 		
-		UserDAO userDAO = new UserDAO();
-		User user = new User();
+		
+		
 		
 		EmployeeDAO employeeDAO = new EmployeeDAO();
 		Employee employee = new Employee();

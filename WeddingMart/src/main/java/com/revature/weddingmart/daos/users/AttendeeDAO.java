@@ -14,7 +14,9 @@ public class AttendeeDAO {
 	public Attendee addAttendee(Attendee attendee) {
 		try {
 			Session session = HibernateUtil.getSession();
+			Transaction transaction = session.beginTransaction();
 			session.save(attendee);
+			transaction.commit();
 			return attendee;
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();

@@ -4,21 +4,32 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="app_users")
+@Table(name = "app_users")
 public class User {
 	@Id
+	@GeneratedValue
+	private long id;
 	@Column()
 	private String email;
-	@Column()
+	@Column(unique = true)
 	private String username;
 	@Column()
 	private String password;
 	@Column()
 	private String phone;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public String getEmail() {
 		return email;
@@ -72,7 +83,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [email=" + email + ", username=" + username + ", password=" + password + ", phone=" + phone + "]";
+		return "User [id=" + id + ", email=" + email + ", username=" + username + ", password=" + password + ", phone="
+				+ phone + "]";
 	}
 
 }

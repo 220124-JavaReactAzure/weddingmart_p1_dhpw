@@ -14,7 +14,9 @@ public class AssetBookingDAO {
 	public AssetBooking addAssetBooking(AssetBooking assetBooking) {
 		try {
 			Session session = HibernateUtil.getSession();
+			Transaction transaction = session.beginTransaction();
 			session.save(assetBooking);
+			transaction.commit();
 			return assetBooking;
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();

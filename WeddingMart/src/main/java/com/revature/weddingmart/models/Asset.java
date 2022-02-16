@@ -107,4 +107,12 @@ public class Asset {
 				&& Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price)
 				&& Objects.equals(type, other.type);
 	}
+
+	@Override
+	public String toString() {
+		return "Asset [id=" + id + ", email=" + email + ", name=" + name + ", phone=" + phone + ", price=" + price
+				+ ", address=" + address + ", type=" + type + "]";
+	}
+	
+	
 }

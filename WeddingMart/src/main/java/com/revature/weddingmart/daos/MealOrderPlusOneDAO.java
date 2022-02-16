@@ -14,7 +14,9 @@ public class MealOrderPlusOneDAO {
 	public MealOrderPlusOne addMealOrderPlusOne(MealOrderPlusOne mealOrderPlusOne) {
 		try {
 			Session session = HibernateUtil.getSession();
+			Transaction transaction = session.beginTransaction();
 			session.save(mealOrderPlusOne);
+			transaction.commit();
 			return mealOrderPlusOne;
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();

@@ -14,7 +14,9 @@ public class WeddingDAO {
 	public Wedding addWedding(Wedding wedding) {
 		try {
 			Session session = HibernateUtil.getSession();
+			Transaction transaction = session.beginTransaction();
 			session.save(wedding);
+			transaction.commit();
 			return wedding;
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();

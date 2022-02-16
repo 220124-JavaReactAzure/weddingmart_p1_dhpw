@@ -14,7 +14,9 @@ public class AssetDAO {
 	public Asset addAsset(Asset asset) {
 		try {
 			Session session = HibernateUtil.getSession();
+			Transaction transaction = session.beginTransaction();
 			session.save(asset);
+			transaction.commit();
 			return asset;
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();
