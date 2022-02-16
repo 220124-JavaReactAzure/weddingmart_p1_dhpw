@@ -2,13 +2,39 @@ package com.revature.weddingmart.models.users;
 
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.revature.weddingmart.models.Wedding;
 
+@Entity
+@Table(name="attendee")
 public class Attendee {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column()
 	private int id;
+	@ManyToOne(optional=false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name="user_id", unique=false, nullable=false, updatable=false)
 	private User user;
+	@ManyToOne(optional=false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name="wedding_id", unique=false, nullable=false, updatable=true)
 	private Wedding wedding;
+	@Column(name = "rsvp_answer")
 	private boolean rsvp;
+	@Column(name = "plus_one_rsvp")
 	private boolean rsvpPlusOne;
 
 	public int getId() {

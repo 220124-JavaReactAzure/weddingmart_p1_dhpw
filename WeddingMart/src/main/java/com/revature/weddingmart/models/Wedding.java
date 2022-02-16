@@ -3,10 +3,25 @@ package com.revature.weddingmart.models;
 import java.util.Date;
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="wedding")
 public class Wedding {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column()
 	private int id;
+	@Column()
 	private double budget;
+	@Column(name = "wedding_date")
 	private Date weddingDate;
+	@Column(name = "rsvp_by_date")
 	private Date rsvpByDate;
 
 	public int getId() {

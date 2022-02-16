@@ -6,18 +6,19 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
-import com.revature.weddingmart.models.Asset;
+import com.revature.weddingmart.models.AssetType;
 import com.revature.weddingmart.util.HibernateUtil;
 
-public class AssetDAO {
-	public Asset addAsset(Asset asset) {
+public class AssetTypeDAO {
+	public AssetType addAssetType(AssetType assetType) {
 		try {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
-			session.save(asset);
+			session.save(assetType);
 			transaction.commit();
-			return asset;
+			return assetType;
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();
 			return null;
@@ -25,12 +26,12 @@ public class AssetDAO {
 			HibernateUtil.closeSession();
 		}
 	}
-
-	public List<Asset> getAllAssets() {
+	
+	public List<AssetType> getAllAssetTypes() {
 		try {
 			Session session = HibernateUtil.getSession();
-			List<Asset> assets = session.createQuery("FROM Asset").list();
-			return assets;
+			List<AssetType> asset_types = session.createQuery("FROM AssetType").list();
+			return asset_types;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -39,11 +40,11 @@ public class AssetDAO {
 		}
 	}
 
-	public Asset getAssetById(int id) {
+	public AssetType getById(int id) {
 		try {
 			Session session = HibernateUtil.getSession();
-			Asset asset = session.get(Asset.class, id);
-			return asset;
+			AssetType assetType = session.get(AssetType.class, id);
+			return assetType;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -52,11 +53,26 @@ public class AssetDAO {
 		}
 	}
 
-	public void updateAsset(Asset asset) {
+	public AssetType getByDescription(String description) {
+		try {
+			Session session = HibernateUtil.getSession();
+			Query query = session.createQuery("FROM AssetType A where A.description = :description");
+			query.setParameter("description", description);
+			List<AssetType> asset_types = query.list();
+			return asset_types.get(0);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			HibernateUtil.closeSession();
+		}
+	}
+	
+	public void updateAssetType(AssetType assetType) {
 		try {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
-			session.merge(asset);
+			session.merge(assetType);
 			transaction.commit();
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();
@@ -65,11 +81,11 @@ public class AssetDAO {
 		}
 	}
 
-	public void deleteAsset(Asset asset) {
+	public void deleteAssetType(AssetType assetType) {
 		try {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
-			session.delete(asset);
+			session.delete(assetType);
 			transaction.commit();
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();

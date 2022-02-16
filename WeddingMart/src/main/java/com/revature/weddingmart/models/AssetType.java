@@ -10,13 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="meal_choice")
-public class MealChoice {
+@Table(name = "asset_type")
+public class AssetType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column()
+	@Column(name="id")
 	private int id;
-	@Column()
+	@Column(name="description")
 	private String description;
 
 	public int getId() {
@@ -48,13 +48,13 @@ public class MealChoice {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		MealChoice other = (MealChoice) obj;
+		AssetType other = (AssetType) obj;
 		return Objects.equals(description, other.description) && id == other.id;
 	}
 
 	@Override
 	public String toString() {
-		return "MealChoice [id=" + id + ", description=" + description + "]";
+		return "AssetType [id=" + id + ", description=" + description + "]";
 	}
 
 }

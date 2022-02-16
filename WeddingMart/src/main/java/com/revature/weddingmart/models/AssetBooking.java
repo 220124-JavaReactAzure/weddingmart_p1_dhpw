@@ -1,8 +1,10 @@
-package com.revature.weddingmart.models.users;
+package com.revature.weddingmart.models;
 
+import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,22 +15,22 @@ import javax.persistence.Table;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import com.revature.weddingmart.models.Wedding;
-
 @Entity
-@Table(name = "betrothed")
-public class Betrothed {
+@Table(name = "asset_booking")
+public class AssetBooking {
 	@Id
 	@GeneratedValue
 	private long id;
 	@ManyToOne(optional = false, cascade = CascadeType.ALL)
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	@JoinColumn(name = "user_email", unique = false, nullable = false, updatable = false)
-	private User user;
+	@JoinColumn(name = "asset_id", unique = false, nullable = false, updatable = false)
+	private Asset asset;
 	@ManyToOne(optional = false, cascade = CascadeType.ALL)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "wedding_id", unique = false, nullable = false, updatable = false)
 	private Wedding wedding;
+	@Column(name = "booking_date")
+	private Date date;
 
 	public long getId() {
 		return id;
@@ -38,12 +40,12 @@ public class Betrothed {
 		this.id = id;
 	}
 
-	public User getUser() {
-		return user;
+	public Asset getAsset() {
+		return asset;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setAsset(Asset asset) {
+		this.asset = asset;
 	}
 
 	public Wedding getWedding() {
@@ -54,9 +56,17 @@ public class Betrothed {
 		this.wedding = wedding;
 	}
 
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(user, wedding);
+		return Objects.hash(asset, date, wedding);
 	}
 
 	@Override
@@ -67,13 +77,14 @@ public class Betrothed {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Betrothed other = (Betrothed) obj;
-		return Objects.equals(user, other.user) && Objects.equals(wedding, other.wedding);
+		AssetBooking other = (AssetBooking) obj;
+		return Objects.equals(asset, other.asset) && Objects.equals(date, other.date)
+				&& Objects.equals(wedding, other.wedding);
 	}
 
 	@Override
 	public String toString() {
-		return "Betrothed [user=" + user + ", wedding=" + wedding + "]";
+		return "AssetBooking [asset=" + asset + ", wedding=" + wedding + ", date=" + date + "]";
 	}
 
 }

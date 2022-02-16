@@ -2,12 +2,48 @@ package com.revature.weddingmart.models;
 
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.revature.weddingmart.models.users.Attendee;
 
+@Entity
+@Table(name="meal_order_plus_one")
 public class MealOrderPlusOne {
+	@Id
+	@GeneratedValue
+	private long id;
+	@OneToOne(optional=false, cascade = CascadeType.ALL)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name="attendee_id", unique=false, nullable=false, updatable=true)
 	private Attendee attendee;
+	@ManyToOne(optional=true, cascade = CascadeType.ALL)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name="lunch_choice", unique=false, nullable=true, updatable=true)
 	private MealChoice lunchChoice;
+	@ManyToOne(optional=true, cascade = CascadeType.ALL)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name="dinner_choice", unique=false, nullable=true, updatable=true)
 	private MealChoice dinnerChoice;
+
+	
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public Attendee getAttendee() {
 		return attendee;

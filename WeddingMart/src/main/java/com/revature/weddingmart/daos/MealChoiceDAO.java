@@ -7,17 +7,17 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.revature.weddingmart.models.Asset;
+import com.revature.weddingmart.models.MealChoice;
 import com.revature.weddingmart.util.HibernateUtil;
 
-public class AssetDAO {
-	public Asset addAsset(Asset asset) {
+public class MealChoiceDAO {
+	public MealChoice addMealChoice(MealChoice mealChoice) {
 		try {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
-			session.save(asset);
+			session.save(mealChoice);
 			transaction.commit();
-			return asset;
+			return mealChoice;
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();
 			return null;
@@ -26,11 +26,11 @@ public class AssetDAO {
 		}
 	}
 
-	public List<Asset> getAllAssets() {
+	public List<MealChoice> getAllMealChoices() {
 		try {
 			Session session = HibernateUtil.getSession();
-			List<Asset> assets = session.createQuery("FROM Asset").list();
-			return assets;
+			List<MealChoice> mealChoices = session.createQuery("FROM MealChoice").list();
+			return mealChoices;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -39,11 +39,11 @@ public class AssetDAO {
 		}
 	}
 
-	public Asset getAssetById(int id) {
+	public MealChoice getMealChoiceById(int id) {
 		try {
 			Session session = HibernateUtil.getSession();
-			Asset asset = session.get(Asset.class, id);
-			return asset;
+			MealChoice mealChoice = session.get(MealChoice.class, id);
+			return mealChoice;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -52,11 +52,11 @@ public class AssetDAO {
 		}
 	}
 
-	public void updateAsset(Asset asset) {
+	public void updateMealChoice(MealChoice mealChoice) {
 		try {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
-			session.merge(asset);
+			session.merge(mealChoice);
 			transaction.commit();
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();
@@ -65,11 +65,11 @@ public class AssetDAO {
 		}
 	}
 
-	public void deleteAsset(Asset asset) {
+	public void deleteMealChoice(MealChoice mealChoice) {
 		try {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
-			session.delete(asset);
+			session.delete(mealChoice);
 			transaction.commit();
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();
