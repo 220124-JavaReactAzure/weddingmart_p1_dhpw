@@ -28,6 +28,16 @@ public class MealOrderPlusOne {
     @JoinColumn(name="dinner_choice", unique=false, nullable=true, updatable=true)
 	private MealChoice dinnerChoice;
 
+	
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public Attendee getAttendee() {
 		return attendee;
 	}

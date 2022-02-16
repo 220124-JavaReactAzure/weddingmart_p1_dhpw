@@ -24,6 +24,14 @@ public class Betrothed {
 	@JoinColumn(name = "wedding_id", unique = false, nullable = false, updatable = false)
 	private Wedding wedding;
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public User getUser() {
 		return user;
 	}

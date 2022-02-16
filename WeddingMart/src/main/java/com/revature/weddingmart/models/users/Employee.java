@@ -11,16 +11,40 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="employee")
+@Table(name = "employee")
 public class Employee {
 	@Id
 	@GeneratedValue
 	private long id;
-	@OneToOne(optional=false)
-    @JoinColumn(name="user_email", unique=false, nullable=false, updatable=true)
+	@OneToOne(optional = false)
+	@JoinColumn(name = "user_email", unique = false, nullable = false, updatable = true)
 	private User user;
 	@Column(name = "is_manager")
 	private boolean isManager;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public boolean isManager() {
+		return isManager;
+	}
+
+	public void setManager(boolean isManager) {
+		this.isManager = isManager;
+	}
 
 	@Override
 	public int hashCode() {
