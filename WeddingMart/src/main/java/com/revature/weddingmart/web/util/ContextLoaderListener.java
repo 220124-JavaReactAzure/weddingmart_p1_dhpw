@@ -4,12 +4,17 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class ContextLoaderListener implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		//init DAOs
-		//init Services
-		//init Servlets
+		ObjectMapper mapper = new ObjectMapper();
+		
+		//init DAO
+		//init Service
+		//init Servle
+		
 		//add servlets
 		ServletContext context = sce.getServletContext();
 		//context.addServlet("ServetletName", initedServletFromAbove).addMapping("/url/*");
