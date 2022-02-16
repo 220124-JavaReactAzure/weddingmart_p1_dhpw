@@ -11,14 +11,14 @@ import com.revature.weddingmart.models.MealChoice;
 import com.revature.weddingmart.util.HibernateUtil;
 
 public class MealChoiceDAO {
-	public boolean addMealChoice(MealChoice mealChoice) {
+	public MealChoice addMealChoice(MealChoice mealChoice) {
 		try {
 			Session session = HibernateUtil.getSession();
 			session.save(mealChoice);
-			return true;
+			return mealChoice;
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();
-			return false;
+			return null;
 		} finally {
 			HibernateUtil.closeSession();
 		}

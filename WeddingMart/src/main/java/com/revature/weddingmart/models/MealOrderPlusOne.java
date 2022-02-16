@@ -3,6 +3,8 @@ package com.revature.weddingmart.models;
 import java.util.Objects;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -13,6 +15,9 @@ import com.revature.weddingmart.models.users.Attendee;
 @Entity
 @Table(name="meal_order_plus_one")
 public class MealOrderPlusOne {
+	@Id
+	@GeneratedValue
+	private long id;
 	@OneToOne(optional=false)
     @JoinColumn(name="attendee_id", unique=false, nullable=false, updatable=true)
 	private Attendee attendee;

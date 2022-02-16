@@ -11,14 +11,14 @@ import com.revature.weddingmart.models.users.Betrothed;
 import com.revature.weddingmart.util.HibernateUtil;
 
 public class BetrothedDAO {
-	public boolean addBetrothed(Betrothed betrothed) {
+	public Betrothed addBetrothed(Betrothed betrothed) {
 		try {
 			Session session = HibernateUtil.getSession();
 			session.save(betrothed);
-			return true;
+			return betrothed;
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();
-			return false;
+			return null;
 		} finally {
 			HibernateUtil.closeSession();
 		}

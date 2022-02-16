@@ -11,14 +11,14 @@ import com.revature.weddingmart.models.users.Attendee;
 import com.revature.weddingmart.util.HibernateUtil;
 
 public class AttendeeDAO {
-	public boolean addAttendee(Attendee attendee) {
+	public Attendee addAttendee(Attendee attendee) {
 		try {
 			Session session = HibernateUtil.getSession();
 			session.save(attendee);
-			return true;
+			return attendee;
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();
-			return false;
+			return null;
 		} finally {
 			HibernateUtil.closeSession();
 		}

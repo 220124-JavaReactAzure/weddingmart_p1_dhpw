@@ -11,14 +11,14 @@ import com.revature.weddingmart.models.Asset;
 import com.revature.weddingmart.util.HibernateUtil;
 
 public class AssetDAO {
-	public boolean addAsset(Asset asset) {
+	public Asset addAsset(Asset asset) {
 		try {
 			Session session = HibernateUtil.getSession();
 			session.save(asset);
-			return true;
+			return asset;
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();
-			return false;
+			return null;
 		} finally {
 			HibernateUtil.closeSession();
 		}

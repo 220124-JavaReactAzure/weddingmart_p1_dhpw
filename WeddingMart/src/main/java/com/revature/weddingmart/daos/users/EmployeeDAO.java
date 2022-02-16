@@ -11,14 +11,14 @@ import com.revature.weddingmart.models.users.Employee;
 import com.revature.weddingmart.util.HibernateUtil;
 
 public class EmployeeDAO {
-	public boolean addEmployee(Employee employee) {
+	public Employee addEmployee(Employee employee) {
 		try {
 			Session session = HibernateUtil.getSession();
 			session.save(employee);
-			return true;
+			return employee;
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();
-			return false;
+			return null;
 		} finally {
 			HibernateUtil.closeSession();
 		}
