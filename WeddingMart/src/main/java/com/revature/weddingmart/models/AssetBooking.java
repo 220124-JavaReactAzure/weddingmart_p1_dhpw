@@ -26,6 +26,14 @@ public class AssetBooking {
 	@Column(name = "booking_date")
 	private Date date;
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public Asset getAsset() {
 		return asset;
 	}
