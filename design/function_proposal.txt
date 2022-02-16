@@ -1,13 +1,13 @@
 Servlets
 /user POST GET PUT DELETE
-/employee POST DELETE
-/betrothed POST
+/employee POST GET PUT DELETE
+/betrothed POST GET PUT DELETE
 /wedding POST GET PUT DELETE
 /asset POST GET PUT DELETE
-/asset_booking POST DELETE
+/asset_booking POST GET PUT DELETE
 /attendee POST GET PUT DELETE
-/meal_order POST PUT
-/meal_order_plus_one POST PUT
+/meal_order POST GET PUT DELETE
+/meal_order_plus_one POST GET PUT DELETE
 
 User
 	Register
