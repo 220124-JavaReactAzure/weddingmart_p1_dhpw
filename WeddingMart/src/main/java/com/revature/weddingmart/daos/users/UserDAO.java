@@ -42,7 +42,7 @@ public class UserDAO {
 	public User getUserById(int id) {
 		try {
 			Session session = HibernateUtil.getSession();
-			User user = session.get(User.class, id);
+			User user = session.get(User.class, (long)id);
 			return user;
 		} catch (Exception e) {
 			e.printStackTrace();
