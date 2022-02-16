@@ -85,8 +85,8 @@ public class DAOTestDriver {
 		attendee = attendeeDAO.addAttendee(attendee);
 		System.out.println(attendee);
 		
-		MealChoiceDAO mealChoiceDAO = new MealChoiceDAO();
-		MealChoice mealChoice = new MealChoice();
+		MealChoiceDAO mealChoiceDAO = new MealChoiceDAO();		
+		MealChoice mealChoice = new MealChoice();		
 		mealChoice.setId(0);
 		mealChoice.setDescription("meat");
 		
