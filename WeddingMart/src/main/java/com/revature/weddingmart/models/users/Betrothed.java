@@ -23,7 +23,7 @@ public class Betrothed {
 	private long id;
 	@ManyToOne(optional = false, cascade = CascadeType.ALL)
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	@JoinColumn(name = "user_email", unique = false, nullable = false, updatable = false)
+	@JoinColumn(name = "user_id", unique = false, nullable = false, updatable = false)
 	private User user;
 	@ManyToOne(optional = false, cascade = CascadeType.ALL)
 	@OnDelete(action = OnDeleteAction.CASCADE)

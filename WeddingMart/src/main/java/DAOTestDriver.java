@@ -92,16 +92,14 @@ public class DAOTestDriver {
 		MealOrderDAO mealOrderDAO = new MealOrderDAO();
 		MealOrder mealOrder = new MealOrder();
 		mealOrder.setAttendee(attendee);
-		mealOrder.setLunchChoice(mealChoice);
-		mealOrder.setDinnerChoice(mealChoice);
+		mealOrder.setMealChoice(mealChoice);
 		mealOrder = mealOrderDAO.addMealOrder(mealOrder);
 		System.out.println(mealOrder);
 		
 		MealOrderPlusOneDAO mealOrderPlusOneDAO = new MealOrderPlusOneDAO();
 		MealOrderPlusOne mealOrderPlusOne = new MealOrderPlusOne();
 		mealOrderPlusOne.setAttendee(attendee);
-		mealOrderPlusOne.setLunchChoice(mealChoice);
-		mealOrderPlusOne.setDinnerChoice(mealChoice);
+		mealOrderPlusOne.setMealChoice(mealChoice);
 		mealOrderPlusOne = mealOrderPlusOneDAO.addMealOrderPlusOne(mealOrderPlusOne);
 		System.out.println(mealOrderPlusOne);
 		
