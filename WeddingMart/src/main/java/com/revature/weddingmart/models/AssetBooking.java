@@ -29,8 +29,6 @@ public class AssetBooking {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "wedding_id", unique = false, nullable = false, updatable = false)
 	private Wedding wedding;
-	@Column(name = "booking_date")
-	private Date date;
 
 	public long getId() {
 		return id;
@@ -56,17 +54,9 @@ public class AssetBooking {
 		this.wedding = wedding;
 	}
 
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(asset, date, wedding);
+		return Objects.hash(asset, wedding);
 	}
 
 	@Override
@@ -78,13 +68,13 @@ public class AssetBooking {
 		if (getClass() != obj.getClass())
 			return false;
 		AssetBooking other = (AssetBooking) obj;
-		return Objects.equals(asset, other.asset) && Objects.equals(date, other.date)
+		return Objects.equals(asset, other.asset)
 				&& Objects.equals(wedding, other.wedding);
 	}
 
 	@Override
 	public String toString() {
-		return "AssetBooking [asset=" + asset + ", wedding=" + wedding + ", date=" + date + "]";
+		return "AssetBooking [asset=" + asset + ", wedding=" + wedding + "]";
 	}
 
 }

@@ -22,7 +22,7 @@ public class Employee {
 	private long id;
 	@OneToOne(optional = false, cascade = CascadeType.ALL)
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	@JoinColumn(name = "user_email", unique = true, nullable = false, updatable = true)
+	@JoinColumn(name = "user_email", unique = true, nullable = false, updatable = false)
 	private User user;
 	@Column(name = "is_manager")
 	private boolean isManager;

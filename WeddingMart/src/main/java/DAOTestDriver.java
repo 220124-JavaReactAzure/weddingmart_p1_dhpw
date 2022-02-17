@@ -75,7 +75,6 @@ public class DAOTestDriver {
 		AssetBooking assetBooking = new AssetBooking();
 		assetBooking.setAsset(asset);
 		assetBooking.setWedding(wedding);
-		assetBooking.setDate(new Date());
 		assetBooking = assetBookingDAO.addAssetBooking(assetBooking);
 		
 		AttendeeDAO attendeeDAO = new AttendeeDAO();
