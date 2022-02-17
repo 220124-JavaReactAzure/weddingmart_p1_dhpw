@@ -28,12 +28,8 @@ public class MealOrder {
 	private Attendee attendee;
 	@ManyToOne(optional = true, cascade = CascadeType.ALL)
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	@JoinColumn(name = "lunch_choice", unique = false, nullable = true, updatable = true)
-	private MealChoice lunchChoice;
-	@ManyToOne(optional = true, cascade = CascadeType.ALL)
-	@OnDelete(action = OnDeleteAction.CASCADE)
-	@JoinColumn(name = "dinner_choice", unique = false, nullable = true, updatable = true)
-	private MealChoice dinnerChoice;
+	@JoinColumn(name = "meal_choice", unique = false, nullable = true, updatable = true)
+	private MealChoice mealChoice;
 
 	public long getId() {
 		return id;
@@ -51,25 +47,17 @@ public class MealOrder {
 		this.attendee = attendee;
 	}
 
-	public MealChoice getLunchChoice() {
-		return lunchChoice;
+	public MealChoice getMealChoice() {
+		return mealChoice;
 	}
 
-	public void setLunchChoice(MealChoice lunchChoice) {
-		this.lunchChoice = lunchChoice;
-	}
-
-	public MealChoice getDinnerChoice() {
-		return dinnerChoice;
-	}
-
-	public void setDinnerChoice(MealChoice dinnerChoice) {
-		this.dinnerChoice = dinnerChoice;
+	public void setMealChoice(MealChoice mealChoice) {
+		this.mealChoice = mealChoice;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(attendee, dinnerChoice, lunchChoice);
+		return Objects.hash(attendee, id, mealChoice);
 	}
 
 	@Override
@@ -81,14 +69,13 @@ public class MealOrder {
 		if (getClass() != obj.getClass())
 			return false;
 		MealOrder other = (MealOrder) obj;
-		return Objects.equals(attendee, other.attendee) && Objects.equals(dinnerChoice, other.dinnerChoice)
-				&& Objects.equals(lunchChoice, other.lunchChoice);
+		return Objects.equals(attendee, other.attendee) && id == other.id
+				&& Objects.equals(mealChoice, other.mealChoice);
 	}
 
 	@Override
 	public String toString() {
-		return "MealOrder [attendee=" + attendee + ", lunchChoice=" + lunchChoice + ", dinnerChoice=" + dinnerChoice
-				+ "]";
+		return "MealOrder [id=" + id + ", attendee=" + attendee + ", mealChoice=" + mealChoice + "]";
 	}
 
 }

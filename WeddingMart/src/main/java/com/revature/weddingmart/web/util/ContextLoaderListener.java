@@ -9,8 +9,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.weddingmart.daos.users.EmployeeDAO;
 import com.revature.weddingmart.daos.users.UserDAO;
+import com.revature.weddingmart.services.users.EmployeeService;
 import com.revature.weddingmart.services.users.UserService;
+import com.revature.weddingmart.web.servlets.users.EmployeeServlet;
 import com.revature.weddingmart.web.servlets.users.UserServlet;
 
 @WebListener
@@ -23,16 +26,18 @@ public class ContextLoaderListener implements ServletContextListener {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		
-		//init DAO
 		UserDAO userDAO = new UserDAO();
-		//init Service
 		UserService userService = new UserService(userDAO);
-		//init Servlet
 		UserServlet userServlet = new UserServlet(userService, mapper);
+		
+		EmployeeDAO employeeDAO = new EmployeeDAO();
+		EmployeeService employeeService = new EmployeeService(employeeDAO);
+		EmployeeServlet employeeServlet = new EmployeeServlet(employeeService, userService, mapper);
 		
 		//add servlets
 		ServletContext context = sce.getServletContext();
 		context.addServlet("UserServlet", userServlet).addMapping("/user/*");
+		context.addServlet("EmployeeServlet", employeeServlet).addMapping("/employee/*");
 	}
 	
 	@Override

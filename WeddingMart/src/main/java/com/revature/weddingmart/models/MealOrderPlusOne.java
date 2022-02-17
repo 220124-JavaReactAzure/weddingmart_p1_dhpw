@@ -17,26 +17,28 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.revature.weddingmart.models.users.Attendee;
 
 @Entity
-@Table(name="meal_order_plus_one")
+@Table(name = "meal_order_plus_one")
 public class MealOrderPlusOne {
 	@Id
 	@GeneratedValue
 	private long id;
-	@OneToOne(optional=false, cascade = CascadeType.ALL)
+	@OneToOne(optional = false, cascade = CascadeType.ALL)
 	@OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name="attendee_id", unique=false, nullable=false, updatable=true)
+	@JoinColumn(name = "attendee_id", unique = false, nullable = false, updatable = true)
 	private Attendee attendee;
-	@ManyToOne(optional=true, cascade = CascadeType.ALL)
+	@ManyToOne(optional = true, cascade = CascadeType.ALL)
 	@OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name="lunch_choice", unique=false, nullable=true, updatable=true)
-	private MealChoice lunchChoice;
-	@ManyToOne(optional=true, cascade = CascadeType.ALL)
-	@OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name="dinner_choice", unique=false, nullable=true, updatable=true)
-	private MealChoice dinnerChoice;
+	@JoinColumn(name = "meal_choice", unique = false, nullable = true, updatable = true)
+	private MealChoice mealChoice;
 
-	
-	
+	public MealChoice getMealChoice() {
+		return mealChoice;
+	}
+
+	public void setMealChoice(MealChoice mealChoice) {
+		this.mealChoice = mealChoice;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -53,25 +55,9 @@ public class MealOrderPlusOne {
 		this.attendee = attendee;
 	}
 
-	public MealChoice getLunchChoice() {
-		return lunchChoice;
-	}
-
-	public void setLunchChoice(MealChoice lunchChoice) {
-		this.lunchChoice = lunchChoice;
-	}
-
-	public MealChoice getDinnerChoice() {
-		return dinnerChoice;
-	}
-
-	public void setDinnerChoice(MealChoice dinnerChoice) {
-		this.dinnerChoice = dinnerChoice;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(attendee, dinnerChoice, lunchChoice);
+		return Objects.hash(attendee, id, mealChoice);
 	}
 
 	@Override
@@ -83,14 +69,13 @@ public class MealOrderPlusOne {
 		if (getClass() != obj.getClass())
 			return false;
 		MealOrderPlusOne other = (MealOrderPlusOne) obj;
-		return Objects.equals(attendee, other.attendee) && Objects.equals(dinnerChoice, other.dinnerChoice)
-				&& Objects.equals(lunchChoice, other.lunchChoice);
+		return Objects.equals(attendee, other.attendee) && id == other.id
+				&& Objects.equals(mealChoice, other.mealChoice);
 	}
 
 	@Override
 	public String toString() {
-		return "MealOrderPlusOne [attendee=" + attendee + ", lunchChoice=" + lunchChoice + ", dinnerChoice="
-				+ dinnerChoice + "]";
+		return "MealOrderPlusOne [id=" + id + ", attendee=" + attendee + ", mealChoice=" + mealChoice + "]";
 	}
 
 }
