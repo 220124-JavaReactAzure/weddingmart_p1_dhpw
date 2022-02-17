@@ -2,7 +2,6 @@ package com.revature.weddingmart.services.users;
 
 import java.util.List;
 
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,7 +13,6 @@ public class UserService {
 	private final Logger logger = LogManager.getRootLogger();
 	
 	public UserService(UserDAO userDAO) {
-		logger.atLevel(Level.ALL);
 		logger.debug("Created UserService");
 		this.userDAO = userDAO;
 	}

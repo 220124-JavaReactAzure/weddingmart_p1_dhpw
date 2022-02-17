@@ -1,7 +1,5 @@
 package com.revature.weddingmart.web.util;
 
-import org.apache.logging.log4j.Level;
-
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
