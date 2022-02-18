@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "a3ce956a-0fe1-46ec-a1de-0934cb1d451d",
+		"name": "WeddingMart AssetBooking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create AssetBooking",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"asset\": {\"id\": },\r\n    \"wedding\": {\"id\": 7}\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/WeddingMart/assetBooking",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"assetBooking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get AssetBookings",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get AssetBooking/N",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/WeddingMart/assetBooking/64",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"assetBooking",
+						"64"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update AssetBooking",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":8,\"email\":\"sam@photos.com\",\"name\":\"Sam's Photos\",\"phone\":\"123456789\",\"price\":420.69,\"address\":\"123 Any Street, Washington, DC, 12345\",\"type\":{\"id\":4,\"description\":\"photographer\"}}"
+				},
+				"url": {
+					"raw": "localhost:8080/WeddingMart/asset",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"asset"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete AssetBooking/N",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/WeddingMart/assetBooking/64",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"assetBooking",
+						"64"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
