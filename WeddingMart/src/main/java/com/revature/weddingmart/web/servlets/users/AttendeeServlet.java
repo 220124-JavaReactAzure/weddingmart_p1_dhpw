@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.weddingmart.models.users.Attendee;
 import com.revature.weddingmart.services.users.AttendeeService;
-import com.revature.weddingmart.services.users.UserService;
 
 public class AttendeeServlet extends HttpServlet {
 	private final AttendeeService attendeeService;

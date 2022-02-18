@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import com.revature.weddingmart.models.Wedding;
 import com.revature.weddingmart.util.HibernateUtil;
@@ -69,7 +70,10 @@ public class WeddingDAO {
 		try {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
-			session.delete(wedding);
+			String hql = "DELETE FROM Wedding " + "WHERE id = :wedding_id";
+			Query query = session.createQuery(hql);
+			query.setParameter("wedding_id", wedding.getId());
+			query.executeUpdate();
 			transaction.commit();
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();
