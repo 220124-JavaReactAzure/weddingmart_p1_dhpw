@@ -17,6 +17,7 @@ public class EmployeeDAO {
 		try {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
+			session.refresh( employee.getUser() );
 			session.save(employee);
 			transaction.commit();
 			return employee;
@@ -58,6 +59,7 @@ public class EmployeeDAO {
 		try {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
+			session.refresh( employee.getUser() );
 			session.merge(employee);
 			transaction.commit();
 		} catch (HibernateException | IOException e) {

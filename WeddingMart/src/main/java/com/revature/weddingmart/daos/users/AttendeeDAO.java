@@ -17,6 +17,8 @@ public class AttendeeDAO {
 		try {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
+			session.refresh( attendee.getUser() );
+			session.refresh( attendee.getWedding() );
 			session.save(attendee);
 			transaction.commit();
 			return attendee;
@@ -58,6 +60,8 @@ public class AttendeeDAO {
 		try {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
+			session.refresh( attendee.getUser() );
+			session.refresh( attendee.getWedding() );
 			session.merge(attendee);
 			transaction.commit();
 		} catch (HibernateException | IOException e) {

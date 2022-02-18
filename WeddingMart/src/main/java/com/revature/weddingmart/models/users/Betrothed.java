@@ -27,7 +27,7 @@ public class Betrothed {
 	private User user;
 	@ManyToOne(optional = false, cascade = CascadeType.ALL)
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	@JoinColumn(name = "wedding_id", unique = false, nullable = false, updatable = false)
+	@JoinColumn(name = "wedding_id", unique = false, nullable = false, updatable = true)
 	private Wedding wedding;
 
 	public int getId() {

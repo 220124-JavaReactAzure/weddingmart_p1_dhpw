@@ -11,18 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.weddingmart.models.users.Attendee;
-import com.revature.weddingmart.services.WeddingService;
 import com.revature.weddingmart.services.users.AttendeeService;
 import com.revature.weddingmart.services.users.UserService;
 
 public class AttendeeServlet extends HttpServlet {
 	private final AttendeeService attendeeService;
-	private final UserService userService;
 	private final ObjectMapper mapper;
 
-	public AttendeeServlet(AttendeeService attendeeService, UserService userService, ObjectMapper mapper) {
+	public AttendeeServlet(AttendeeService attendeeService, ObjectMapper mapper) {
 		this.attendeeService = attendeeService;
-		this.userService = userService;
 		this.mapper = mapper;
 	}
 
@@ -57,10 +54,6 @@ public class AttendeeServlet extends HttpServlet {
 		resp.setContentType("application/json");
 		Attendee newAttendee = mapper.readValue(req.getInputStream(), Attendee.class);
 		
-		int userID = newAttendee.getUser().getId();
-		int weddingID = newAttendee.getWedding().getId();
-		newAttendee.setUser( userService.getUserById( userID ) );
-		
 		newAttendee = attendeeService.addAttendee(newAttendee);
 		if (newAttendee == null) {
 			resp.setStatus(500);
@@ -78,8 +71,7 @@ public class AttendeeServlet extends HttpServlet {
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("application/json");
 		Attendee newAttendee = mapper.readValue(req.getInputStream(), Attendee.class);
-		long userID = newAttendee.getUser().getId();
-		newAttendee.setUser( userService.getUserById( (int) userID ) );
+
 		try {
 			attendeeService.updateAttendee(newAttendee);
 			String payload = mapper.writeValueAsString(newAttendee);
