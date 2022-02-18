@@ -24,7 +24,7 @@ public class MealOrder {
 	private int id;
 	@OneToOne(optional = false, cascade = CascadeType.ALL)
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	@JoinColumn(name = "attendee_id", unique = false, nullable = false, updatable = true)
+	@JoinColumn(name = "attendee_id", unique = true, nullable = false, updatable = true)
 	private Attendee attendee;
 	@ManyToOne(optional = true, cascade = CascadeType.ALL)
 	@OnDelete(action = OnDeleteAction.CASCADE)
