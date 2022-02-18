@@ -16,7 +16,7 @@ public class MealChoice {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column()
 	private int id;
-	@Column()
+	@Column(unique=true)
 	private String description;
 
 	public int getId() {

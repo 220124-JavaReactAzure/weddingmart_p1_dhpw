@@ -11,12 +11,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
-@Table(name = "asset_booking")
+@Table(name = "asset_booking",
+uniqueConstraints={
+		@UniqueConstraint(columnNames ={"asset_id","wedding_id"})
+		}
+)
 public class AssetBooking {
 	@Id
 	@GeneratedValue

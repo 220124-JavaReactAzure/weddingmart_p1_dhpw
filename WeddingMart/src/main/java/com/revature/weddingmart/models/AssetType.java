@@ -16,7 +16,7 @@ public class AssetType {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
-	@Column(name="description")
+	@Column(name="description", unique=true)
 	private String description;
 
 	public int getId() {

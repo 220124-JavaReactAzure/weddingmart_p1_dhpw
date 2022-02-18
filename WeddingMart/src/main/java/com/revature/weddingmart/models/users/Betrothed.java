@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -16,7 +17,11 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.revature.weddingmart.models.Wedding;
 
 @Entity
-@Table(name = "betrothed")
+@Table(name = "betrothed",
+uniqueConstraints={
+		@UniqueConstraint(columnNames ={"user_id","wedding_id"})
+		}
+)
 public class Betrothed {
 	@Id
 	@GeneratedValue
