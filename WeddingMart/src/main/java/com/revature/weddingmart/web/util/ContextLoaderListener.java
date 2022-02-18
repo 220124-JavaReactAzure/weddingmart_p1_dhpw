@@ -9,14 +9,17 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.weddingmart.daos.WeddingDAO;
 import com.revature.weddingmart.daos.users.AttendeeDAO;
 import com.revature.weddingmart.daos.users.BetrothedDAO;
 import com.revature.weddingmart.daos.users.EmployeeDAO;
 import com.revature.weddingmart.daos.users.UserDAO;
+import com.revature.weddingmart.services.WeddingService;
 import com.revature.weddingmart.services.users.AttendeeService;
 import com.revature.weddingmart.services.users.BetrothedService;
 import com.revature.weddingmart.services.users.EmployeeService;
 import com.revature.weddingmart.services.users.UserService;
+import com.revature.weddingmart.web.servlets.WeddingServlet;
 import com.revature.weddingmart.web.servlets.users.AttendeeServlet;
 import com.revature.weddingmart.web.servlets.users.BetrothedServlet;
 import com.revature.weddingmart.web.servlets.users.EmployeeServlet;
@@ -48,12 +51,17 @@ public class ContextLoaderListener implements ServletContextListener {
 		BetrothedService betrothedService = new BetrothedService(betrothedDAO);
 		BetrothedServlet betrothedServlet = new BetrothedServlet(betrothedService, mapper);
 		
+		WeddingDAO weddingDAO = new WeddingDAO();
+		WeddingService weddingService = new WeddingService(weddingDAO);
+		WeddingServlet weddingServlet = new WeddingServlet(weddingService, mapper);
+		
 		//add servlets
 		ServletContext context = sce.getServletContext();
 		context.addServlet("UserServlet", userServlet).addMapping("/user/*");
 		context.addServlet("EmployeeServlet", employeeServlet).addMapping("/employee/*");
 		context.addServlet("AttendeeServlet", attendeeServlet).addMapping("/attendee/*");
 		context.addServlet("BetrothedServlet", betrothedServlet).addMapping("/betrothed/*");
+		context.addServlet("WeddingServlet", weddingServlet).addMapping("/wedding/*");
 	}
 	
 	@Override
