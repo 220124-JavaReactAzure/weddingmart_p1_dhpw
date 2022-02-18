@@ -21,7 +21,7 @@ import com.revature.weddingmart.models.users.Attendee;
 public class MealOrderPlusOne {
 	@Id
 	@GeneratedValue
-	private long id;
+	private int id;
 	@OneToOne(optional = false, cascade = CascadeType.ALL)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "attendee_id", unique = false, nullable = false, updatable = true)
@@ -39,11 +39,11 @@ public class MealOrderPlusOne {
 		this.mealChoice = mealChoice;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class User {
 	@Id
 	@GeneratedValue
-	private long id;
+	private int id;
 	@Column(unique = true)
 	private String email;
 	@Column(unique = true)
@@ -23,11 +23,11 @@ public class User {
 	@Column()
 	private String phone;
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

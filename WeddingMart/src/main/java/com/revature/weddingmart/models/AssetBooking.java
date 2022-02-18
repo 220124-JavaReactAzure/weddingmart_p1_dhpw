@@ -20,7 +20,7 @@ import org.hibernate.annotations.OnDeleteAction;
 public class AssetBooking {
 	@Id
 	@GeneratedValue
-	private long id;
+	private int id;
 	@ManyToOne(optional = false, cascade = CascadeType.ALL)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "asset_id", unique = false, nullable = false, updatable = false)
@@ -30,11 +30,11 @@ public class AssetBooking {
 	@JoinColumn(name = "wedding_id", unique = false, nullable = false, updatable = false)
 	private Wedding wedding;
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

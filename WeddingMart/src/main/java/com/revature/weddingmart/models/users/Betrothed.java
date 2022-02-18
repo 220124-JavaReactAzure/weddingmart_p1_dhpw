@@ -20,7 +20,7 @@ import com.revature.weddingmart.models.Wedding;
 public class Betrothed {
 	@Id
 	@GeneratedValue
-	private long id;
+	private int id;
 	@ManyToOne(optional = false, cascade = CascadeType.ALL)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "user_id", unique = false, nullable = false, updatable = false)
@@ -30,11 +30,11 @@ public class Betrothed {
 	@JoinColumn(name = "wedding_id", unique = false, nullable = false, updatable = false)
 	private Wedding wedding;
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

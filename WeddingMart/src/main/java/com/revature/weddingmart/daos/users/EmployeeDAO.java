@@ -44,7 +44,7 @@ public class EmployeeDAO {
 	public Employee getEmployeeById(int id) {
 		try {
 			Session session = HibernateUtil.getSession();
-			Employee employee = session.get(Employee.class, (long) id);
+			Employee employee = session.get(Employee.class, id);
 			return employee;
 		} catch (Exception e) {
 			e.printStackTrace();

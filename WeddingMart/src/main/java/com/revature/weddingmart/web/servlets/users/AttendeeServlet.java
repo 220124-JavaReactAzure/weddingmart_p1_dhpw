@@ -57,9 +57,9 @@ public class AttendeeServlet extends HttpServlet {
 		resp.setContentType("application/json");
 		Attendee newAttendee = mapper.readValue(req.getInputStream(), Attendee.class);
 		
-		long userID = newAttendee.getUser().getId();
-		long weddingID = newAttendee.getWedding().getId();
-		newAttendee.setUser( userService.getUserById( (int) userID ) );
+		int userID = newAttendee.getUser().getId();
+		int weddingID = newAttendee.getWedding().getId();
+		newAttendee.setUser( userService.getUserById( userID ) );
 		
 		newAttendee = attendeeService.addAttendee(newAttendee);
 		if (newAttendee == null) {
