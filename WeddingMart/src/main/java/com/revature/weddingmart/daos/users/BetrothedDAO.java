@@ -3,6 +3,8 @@ package com.revature.weddingmart.daos.users;
 import java.io.IOException;
 import java.util.List;
 
+import org.hibernate.query.Query;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -15,6 +17,8 @@ public class BetrothedDAO {
 		try {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
+			session.refresh( betrothed.getUser() );
+			session.refresh( betrothed.getWedding() );
 			session.save(betrothed);
 			transaction.commit();
 			return betrothed;
@@ -56,6 +60,8 @@ public class BetrothedDAO {
 		try {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
+			session.refresh( betrothed.getUser() );
+			session.refresh( betrothed.getWedding() );
 			session.merge(betrothed);
 			transaction.commit();
 		} catch (HibernateException | IOException e) {
@@ -69,7 +75,10 @@ public class BetrothedDAO {
 		try {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
-			session.delete(betrothed);
+			String hql = "DELETE FROM Betrothed " + "WHERE id = :betrothed_id";
+			Query query = session.createQuery(hql);
+			query.setParameter("betrothed_id", betrothed.getId());
+			query.executeUpdate();
 			transaction.commit();
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();
@@ -78,4 +87,3 @@ public class BetrothedDAO {
 		}
 	}
 }
-

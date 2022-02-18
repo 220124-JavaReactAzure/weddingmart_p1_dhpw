@@ -19,7 +19,7 @@ import org.hibernate.annotations.OnDeleteAction;
 public class Employee {
 	@Id
 	@GeneratedValue
-	private long id;
+	private int id;
 	@OneToOne(optional = false, cascade = CascadeType.ALL)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "user_id", unique = true, nullable = false, updatable = false)
@@ -27,11 +27,11 @@ public class Employee {
 	@Column(name = "is_manager")
 	private boolean isManager;
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

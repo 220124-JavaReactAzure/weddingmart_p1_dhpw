@@ -16,12 +16,10 @@ import com.revature.weddingmart.services.users.UserService;
 
 public class EmployeeServlet extends HttpServlet {
 	private final EmployeeService employeeService;
-	private final UserService userService;
 	private final ObjectMapper mapper;
 
-	public EmployeeServlet(EmployeeService employeeService, UserService userService, ObjectMapper mapper) {
+	public EmployeeServlet(EmployeeService employeeService, ObjectMapper mapper) {
 		this.employeeService = employeeService;
-		this.userService = userService;
 		this.mapper = mapper;
 	}
 
@@ -56,9 +54,6 @@ public class EmployeeServlet extends HttpServlet {
 		resp.setContentType("application/json");
 		Employee newEmployee = mapper.readValue(req.getInputStream(), Employee.class);
 		
-		long userID = newEmployee.getUser().getId();
-		newEmployee.setUser( userService.getUserById( (int) userID ) );
-		
 		newEmployee = employeeService.addEmployee(newEmployee);
 		if (newEmployee == null) {
 			resp.setStatus(500);
@@ -76,8 +71,7 @@ public class EmployeeServlet extends HttpServlet {
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("application/json");
 		Employee newEmployee = mapper.readValue(req.getInputStream(), Employee.class);
-		long userID = newEmployee.getUser().getId();
-		newEmployee.setUser( userService.getUserById( (int) userID ) );
+
 		try {
 			employeeService.updateEmployee(newEmployee);
 			String payload = mapper.writeValueAsString(newEmployee);
