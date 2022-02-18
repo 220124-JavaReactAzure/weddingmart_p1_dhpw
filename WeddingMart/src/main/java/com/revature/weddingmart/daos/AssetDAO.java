@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import com.revature.weddingmart.models.Asset;
 import com.revature.weddingmart.util.HibernateUtil;
@@ -15,6 +16,7 @@ public class AssetDAO {
 		try {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
+			session.refresh(asset.getType());
 			session.save(asset);
 			transaction.commit();
 			return asset;
@@ -56,6 +58,7 @@ public class AssetDAO {
 		try {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
+			session.refresh(asset.getType());
 			session.merge(asset);
 			transaction.commit();
 		} catch (HibernateException | IOException e) {
@@ -69,7 +72,10 @@ public class AssetDAO {
 		try {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
-			session.delete(asset);
+			String hql = "DELETE FROM Asset " + "WHERE id = :asset_id";
+			Query query = session.createQuery(hql);
+			query.setParameter("asset_id", asset.getId());
+			query.executeUpdate();
 			transaction.commit();
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();
