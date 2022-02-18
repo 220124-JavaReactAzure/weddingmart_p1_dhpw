@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "95d8a69f-47a9-4b81-8970-04ce1a04caa5",
+		"name": "WeddingMart Asset",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Asset",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\": \"123 Any Street, Washington, DC, 12345\",\r\n    \"email\": \"sam@photos.com\",\r\n    \"phone\": \"123456789\",\r\n    \"name\": \"Sam's Photos\",\r\n    \"price\": 420.69,\r\n    \"type\": {\"id\": 4}\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/WeddingMart/asset",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"asset"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Assets",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get Asset/N",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/WeddingMart/asset/8",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"asset",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Asset/N Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/WeddingMart/asset/8",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"asset",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Asset",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":8,\"email\":\"sam@photos.com\",\"name\":\"Sam's Photos\",\"phone\":\"123456789\",\"price\":420.69,\"address\":\"123 Any Street, Washington, DC, 12345\",\"type\":{\"id\":4,\"description\":\"photographer\"}}"
+				},
+				"url": {
+					"raw": "localhost:8080/WeddingMart/asset",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"asset"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "c0aa8243-887c-4b0c-9690-aed2d2badac0",
+		"name": "WeddingMart Betrothed",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Betrothed",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": {\"id\":93,\"email\":\"test5\",\"username\":\"test5\",\"password\":\"password\",\"phone\":\"123456789\"}\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/WeddingMart/employee",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"employee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Betrothed",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/WeddingMart/betrothed",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"betrothed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Betrothed/N",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/WeddingMart/betrothed/37",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"betrothed",
+						"37"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Betrothed",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":8,\r\n    \"rsvp\":true,\r\n    \"rsvpPlusOne\":false\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/WeddingMart/betrothed",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"betrothed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Betrothed/N",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/WeddingMart/betrothed/37",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"betrothed",
+						"37"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

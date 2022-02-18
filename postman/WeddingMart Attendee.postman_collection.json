@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "8986c8a9-abb8-4728-a102-77e43be48846",
+		"name": "WeddingMart Attendee",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Attendee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": {\"id\":39},\r\n    \"wedding\": {\"id\":7}\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/WeddingMart/attendee",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"attendee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Attendees",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/WeddingMart/attendee",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"attendee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Attendee/N",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/WeddingMart/attendee/8",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"attendee",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Attendee",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":8,\"user\":{\"id\":39,\"email\":\"demo1@test.com\",\"username\":\"test1\",\"password\":\"password\",\"phone\":\"123456789\"},\"wedding\":{\"id\":7,\"budget\":0,\"weddingDate\":null,\"rsvpByDate\":null},\"rsvp\":true,\"rsvpPlusOne\":false}"
+				},
+				"url": {
+					"raw": "localhost:8080/WeddingMart/attendee",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"attendee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Attendee/N",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/WeddingMart/attendee/7",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"attendee",
+						"7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
