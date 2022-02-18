@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name="wedding")
 public class Wedding {
@@ -19,8 +21,10 @@ public class Wedding {
 	private int id;
 	@Column()
 	private double budget;
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "wedding_date")
 	private Date weddingDate;
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "rsvp_by_date")
 	private Date rsvpByDate;
 
