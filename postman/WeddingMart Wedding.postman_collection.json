@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "9aef9909-11bf-452a-86ae-5594c3d4fd1a",
+		"name": "WeddingMart Wedding",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Wedding",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": {\"id\":39},\r\n    \"wedding\": {\"id\":7}\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/WeddingMart/attendee",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"attendee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Weddings",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/WeddingMart/wedding",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"wedding"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Wedding/N",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/WeddingMart/wedding/7",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"wedding",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Wedding",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":7,\"budget\":666.69,\"weddingDate\":988689600000,\"rsvpByDate\":988689600000}"
+				},
+				"url": {
+					"raw": "localhost:8080/WeddingMart/wedding",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"wedding"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Wedding/N",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/WeddingMart/wedding/7",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"wedding",
+						"7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
