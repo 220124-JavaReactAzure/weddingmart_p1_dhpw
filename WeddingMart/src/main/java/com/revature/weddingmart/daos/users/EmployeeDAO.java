@@ -17,7 +17,6 @@ public class EmployeeDAO {
 		try {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
-			System.out.println(employee.getUser());
 			session.save(employee);
 			transaction.commit();
 			return employee;
