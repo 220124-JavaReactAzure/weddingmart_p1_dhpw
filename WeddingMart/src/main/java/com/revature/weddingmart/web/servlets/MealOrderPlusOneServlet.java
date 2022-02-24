@@ -36,7 +36,7 @@ public class MealOrderPlusOneServlet  extends HttpServlet {
 
 		// if url is /mealOrderPlusone, return all MealOrderPlusOne
 		if (path == null || path.length() < 2) {
-			List<MealOrderPlusOne> mealOrderPlusOne = mealOrderPlusOne.getAllMealOrderPlusOne();
+			List<MealOrderPlusOne> mealOrderPlusOne = mealOrderPlusOneService.getAllMealOrderPlusOnes();
 			String payload = mapper.writeValueAsString(mealOrderPlusOne);
 			writer.write(payload);
 			resp.setStatus(200);
