@@ -27,12 +27,12 @@ public class AssetBookingService {
 	}
 
 	public AssetBooking getAssetBookingById(int id) {
-		logger.info("called AssetBookingService.getAssetBookingById" + id);
+		logger.info("called AssetBookingService.getAssetBookingById with id" + id);
 		return assetBookingDAO.getAssetBookingById(id);
 	}
 
 	public void updateAssetBooking(AssetBooking assetBooking) {
-		logger.info("called AssetBookingService.updateAssetBooking");
+		logger.info("called AssetBookingService.updateAssetBooking with data" + assetBooking);
 		assetBookingDAO.updateAssetBooking(assetBooking);
 	}
 
