@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "8c4073bd-3862-4b7c-a9bc-641fc69af0d5",
+		"name": "WeddingMart MealOrder",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create MealOrder",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"attendee\": {\"id\":13 },\r\n    \"mealChoice\": {\"id\": 22}\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/WeddingMart/mealOrder",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"mealOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get MealOrders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/WeddingMart/mealOrder",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"mealOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get MealOrder/N",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/WeddingMart/mealOrder/68",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"mealOrder",
+						"68"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update MealOrder",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":8,\"email\":\"sam@photos.com\",\"name\":\"Sam's Photos\",\"phone\":\"123456789\",\"price\":420.69,\"address\":\"123 Any Street, Washington, DC, 12345\",\"type\":{\"id\":4,\"description\":\"photographer\"}}"
+				},
+				"url": {
+					"raw": "localhost:8080/WeddingMart/asset",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"asset"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete MealOrder/N",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/WeddingMart/mealOrder/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"mealOrder",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
