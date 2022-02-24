@@ -1,0 +1,16 @@
+import React, { Component } from 'react';
+import axios from 'axios';
+
+export default class WeddingComponent extends Component {
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+        return (
+            <div>
+			{this.props.id}: {this.props.date} / {this.props.rsvp}, budget={this.props.budget} 
+            </div>
+        )
+    }
+}

@@ -1,0 +1,120 @@
+import React, { Component } from 'react';
+import axios from 'axios';
+
+import WeddingComponent from './Wedding.component';
+import AssetComponent from './Asset.component';
+import AssetBookingComponent from './AssetBooking.component';
+
+export default class AssetAvailabilityComponent extends Component {
+    constructor(props) {
+        super(props);
+		this.state = {
+			weddings: [],
+			assets: [],
+			assetBookings: [],
+			assetTypes: []
+		};
+    }
+	
+	async componentDidMount() {
+        await fetch('http://localhost:8080/WeddingMart/wedding')
+    .then(res => res.json())
+            .then((res) => {
+                this.setState({ 
+                    weddings: res
+                })
+            });
+		await fetch('http://localhost:8080/WeddingMart/asset')
+    .then(res => res.json())
+            .then((res) => {
+                this.setState({ 
+                    assets: res
+                })
+            });
+		await fetch('http://localhost:8080/WeddingMart/assetBooking')
+    .then(res => res.json())
+            .then((res) => {
+                this.setState({ 
+                    assetBookings: res
+                })
+            });
+		await fetch('http://localhost:8080/WeddingMart/assetType')
+    .then(res => res.json())
+            .then((res) => {
+                this.setState({ 
+                    assetTypes: res
+                })
+            });
+	}
+	
+	capitalize(str) {
+		return str.charAt(0).toUpperCase() + str.slice(1);
+	}
+	
+	renderWeddings() {
+		const weddingList = [];
+		this.state.weddings.forEach((wedding) => {
+			let id = wedding.id;
+			let budget = wedding.budget;
+			let weddingDate = wedding.weddingDate;
+			let rsvpByDate = wedding.rsvpByDate;
+			let key = wedding.id.value;
+			weddingList.push(<WeddingComponent id={id} budget={budget} date={weddingDate} rsvp={rsvpByDate} key={key} />);
+		})
+		return weddingList;
+	}
+	
+	renderAssets() {
+		const assetList = [];
+		this.state.assets.forEach((asset) => {
+			let id = asset.id;
+			let email = asset.email;
+			let name = asset.name;
+			let phone = asset.phone;
+			let price = asset.price;
+			let address = asset.address;
+			let description = asset.type.description;
+			let key = asset.id.value;
+			assetList.push(<AssetComponent id={id} email={email} name={name} phone={phone} price={price} address={address} description={this.capitalize(description)} key={key} />);
+		})
+		return assetList;
+	}
+	
+	renderAssetBookings() {
+		const assetBookingList = [];
+		this.state.assetBookings.forEach((assetBooking) => {
+			let id = assetBooking.id;
+			let key = assetBooking.id.value;
+			let asset_id = assetBooking.asset.id;
+			let wedding_id = assetBooking.wedding.id;
+			let booking_date = assetBooking.wedding.weddingDate;
+			assetBookingList.push(<AssetBookingComponent id={id} key={key} asset_id={asset_id} wedding_id={wedding_id} booking_date={booking_date} />);
+		})
+		return assetBookingList;
+	}
+	
+	renderAssetTypes() {
+		const assetTypeList = [];
+		this.state.assetTypes.forEach((assetType) => {
+			let id = assetType.id;
+			let key = assetType.id.value;
+			let description = assetType.description;
+			assetTypeList.push(<option value={id}>{this.capitalize(description)}</option>);
+		});
+		return assetTypeList;
+	}
+
+    render() {
+        return (
+            <div>
+			Find <select> {this.renderAssetTypes()} </select> available between <input type="date"/> and <input type="date"/> <br/>
+			<b>Weddings:</b> <br/>
+			{this.renderWeddings()}
+			<b>Assets:</b> <br/>
+			{this.renderAssets()}
+			<b>AssetBookings:</b> <br/>
+			{this.renderAssetBookings()}
+            </div>
+        )
+    }
+}
