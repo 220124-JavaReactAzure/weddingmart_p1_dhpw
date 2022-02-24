@@ -1,46 +1,43 @@
 package com.revature.weddingmart.services;
 
 import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.util.logging.Logger;
 
 import com.revature.weddingmart.daos.MealOrderDAO;
 import com.revature.weddingmart.models.MealOrder;
 
-
-
 public class MealOrderService {
 	private final MealOrderDAO mealOrderDAO;
-	private final Logger logger = LogManager.getRootLogger();
+	private Logger logger;
 	
 	public MealOrderService(MealOrderDAO mealOrderDAO) {
-		logger.debug("Created MealOrder");
 		this.mealOrderDAO = mealOrderDAO;
+		this.logger = Logger.getLogger("");
+		logger.config("Created MealOrderService");
 	}
 	
 	public MealOrder addMealOrder(MealOrder mealOrder) {
-		logger.debug("called MealOrderService.addMealOrder with " + mealOrder);
+		logger.info("called MealOrderService.addMealOrder with " + mealOrder);
 		return mealOrderDAO.addMealOrder(mealOrder);
 	}
 
 	public List<MealOrder> getAllMealOrder() {
-		logger.debug("called MealOrder.getAllMealOrder");
+		logger.info("called MealOrder.getAllMealOrder");
 		return mealOrderDAO.getAllMealOrders();
 	}
 
 	public MealOrder getMealOrderById(int id) {
-		logger.debug("called MealOrderService.getMealOrderById" + id);
+		logger.info("called MealOrderService.getMealOrderById with id " + id);
 		return mealOrderDAO.getMealOrderById(id);
 	}
 
 	public void updateMealOrder(MealOrder mealOrder) {
-		logger.debug("called MealOrderService.updateMealOrder");
+		logger.info("called MealOrderService.updateMealOrder with data " + mealOrder);
 		mealOrderDAO.updateMealOrder(mealOrder);
 	}
 
 	public void deleteMealOrder(MealOrder mealOrder) {
-		logger.debug("called MealOrder.deleteMealOrder");
+		logger.info("called MealOrder.deleteMealOrder");
 		mealOrderDAO.deleteMealOrder(mealOrder);
 	}
 }

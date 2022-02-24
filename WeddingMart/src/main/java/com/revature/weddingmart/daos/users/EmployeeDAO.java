@@ -2,6 +2,7 @@ package com.revature.weddingmart.daos.users;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.hibernate.query.Query;
 
@@ -23,6 +24,7 @@ public class EmployeeDAO {
 			return employee;
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();
+			Logger.getLogger("").warning("Persistence failed");
 			return null;
 		} finally {
 			HibernateUtil.closeSession();
@@ -36,6 +38,7 @@ public class EmployeeDAO {
 			return employees;
 		} catch (Exception e) {
 			e.printStackTrace();
+			Logger.getLogger("").severe("Retrieval failed");
 			return null;
 		} finally {
 			HibernateUtil.closeSession();
@@ -49,6 +52,7 @@ public class EmployeeDAO {
 			return employee;
 		} catch (Exception e) {
 			e.printStackTrace();
+			Logger.getLogger("").severe("Retrieval failed");
 			return null;
 		} finally {
 			HibernateUtil.closeSession();
@@ -64,6 +68,7 @@ public class EmployeeDAO {
 			transaction.commit();
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();
+			Logger.getLogger("").warning("Persistence failed");
 		} finally {
 			HibernateUtil.closeSession();
 		}
@@ -80,6 +85,7 @@ public class EmployeeDAO {
 			transaction.commit();
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();
+			Logger.getLogger("").warning("Persistence failed");
 		} finally {
 			HibernateUtil.closeSession();
 		}
