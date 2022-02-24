@@ -12,6 +12,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.weddingmart.daos.AssetBookingDAO;
 import com.revature.weddingmart.daos.AssetDAO;
 import com.revature.weddingmart.daos.AssetTypeDAO;
+import com.revature.weddingmart.daos.MealChoiceDAO;
+import com.revature.weddingmart.daos.MealOrderDAO;
+import com.revature.weddingmart.daos.MealOrderPlusOneDAO;
 import com.revature.weddingmart.daos.WeddingDAO;
 import com.revature.weddingmart.daos.users.AttendeeDAO;
 import com.revature.weddingmart.daos.users.BetrothedDAO;
@@ -20,6 +23,9 @@ import com.revature.weddingmart.daos.users.UserDAO;
 import com.revature.weddingmart.services.AssetBookingService;
 import com.revature.weddingmart.services.AssetService;
 import com.revature.weddingmart.services.AssetTypeService;
+import com.revature.weddingmart.services.MealChoiceService;
+import com.revature.weddingmart.services.MealOrderPlusOneService;
+import com.revature.weddingmart.services.MealOrderService;
 import com.revature.weddingmart.services.WeddingService;
 import com.revature.weddingmart.services.users.AttendeeService;
 import com.revature.weddingmart.services.users.BetrothedService;
@@ -28,6 +34,9 @@ import com.revature.weddingmart.services.users.UserService;
 import com.revature.weddingmart.web.servlets.AssetBookingServlet;
 import com.revature.weddingmart.web.servlets.AssetServlet;
 import com.revature.weddingmart.web.servlets.AssetTypeServlet;
+import com.revature.weddingmart.web.servlets.MealChoiceServlet;
+import com.revature.weddingmart.web.servlets.MealOrderPlusOneServlet;
+import com.revature.weddingmart.web.servlets.MealOrderServlet;
 import com.revature.weddingmart.web.servlets.WeddingServlet;
 import com.revature.weddingmart.web.servlets.users.AttendeeServlet;
 import com.revature.weddingmart.web.servlets.users.BetrothedServlet;
@@ -76,6 +85,18 @@ public class ContextLoaderListener implements ServletContextListener {
 		AssetBookingService assetBookingService = new AssetBookingService(assetBookingDAO);
 		AssetBookingServlet assetBookingServlet = new AssetBookingServlet(assetBookingService, mapper);
 		
+		MealChoiceDAO mealChoiceDAO = new MealChoiceDAO();
+		MealChoiceService mealChoiceService = new MealChoiceService(mealChoiceDAO);
+		MealChoiceServlet mealChoiceServlet = new MealChoiceServlet(mealChoiceService, mapper);
+		
+		MealOrderDAO mealOrderDAO = new MealOrderDAO();
+		MealOrderService mealOrderService = new MealOrderService(mealOrderDAO);
+		MealOrderServlet mealOrderServlet = new MealOrderServlet(mealOrderService, mapper);
+		
+		MealOrderPlusOneDAO mealOrderPlusOneDAO = new MealOrderPlusOneDAO();
+		MealOrderPlusOneService mealOrderPlusOneService = new MealOrderPlusOneService(mealOrderPlusOneDAO);
+		MealOrderPlusOneServlet mealOrderPlusOneServlet = new MealOrderPlusOneServlet(mealOrderPlusOneService, mapper);
+		
 		//add servlets
 		ServletContext context = sce.getServletContext();
 		context.addServlet("UserServlet", userServlet).addMapping("/user/*");
@@ -86,6 +107,9 @@ public class ContextLoaderListener implements ServletContextListener {
 		context.addServlet("AssetServlet", assetServlet).addMapping("/asset/*");
 		context.addServlet("AssetTypeServlet", assetTypeServlet).addMapping("/assetType/*");
 		context.addServlet("AssetBookingServlet", assetBookingServlet).addMapping("/assetBooking/*");
+		context.addServlet("MealChoiceServlet", mealChoiceServlet).addMapping("/mealChoice/*");
+		context.addServlet("MealOrderServlet", mealOrderServlet).addMapping("/mealOrder/*");
+		context.addServlet("MealOrderPlusOneServlet", mealOrderPlusOneServlet).addMapping("/mealOrderPlusOne/*");
 	}
 	
 	@Override
