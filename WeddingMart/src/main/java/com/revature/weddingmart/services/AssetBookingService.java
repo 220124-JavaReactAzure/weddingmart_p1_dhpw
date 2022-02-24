@@ -1,44 +1,43 @@
 package com.revature.weddingmart.services;
 
 import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.util.logging.Logger;
 
 import com.revature.weddingmart.daos.AssetBookingDAO;
 import com.revature.weddingmart.models.AssetBooking;
 
 public class AssetBookingService {
 	private final AssetBookingDAO assetBookingDAO;
-	private final Logger logger = LogManager.getRootLogger();
+	private Logger logger;
 	
 	public AssetBookingService(AssetBookingDAO assetBookingDAO) {
-		logger.debug("Created AssetBookingService");
 		this.assetBookingDAO = assetBookingDAO;
+		this.logger = Logger.getLogger("");
+		logger.config("Created AssetBookingService");
 	}
 	
 	public AssetBooking addAssetBooking(AssetBooking assetBooking) {
-		logger.debug("called AssetBookingService.addAssetBooking with " + assetBooking);
+		logger.info("called AssetBookingService.addAssetBooking with " + assetBooking);
 		return assetBookingDAO.addAssetBooking(assetBooking);
 	}
 
 	public List<AssetBooking> getAllAssetBookings() {
-		logger.debug("called AssetBookingService.getAllAssetBookings");
+		logger.info("called AssetBookingService.getAllAssetBookings");
 		return assetBookingDAO.getAllAssetBookings();
 	}
 
 	public AssetBooking getAssetBookingById(int id) {
-		logger.debug("called AssetBookingService.getAssetBookingById" + id);
+		logger.info("called AssetBookingService.getAssetBookingById" + id);
 		return assetBookingDAO.getAssetBookingById(id);
 	}
 
 	public void updateAssetBooking(AssetBooking assetBooking) {
-		logger.debug("called AssetBookingService.updateAssetBooking");
+		logger.info("called AssetBookingService.updateAssetBooking");
 		assetBookingDAO.updateAssetBooking(assetBooking);
 	}
 
 	public void deleteAssetBooking(AssetBooking assetBooking) {
-		logger.debug("called AssetBookingService.deleteAssetBooking");
+		logger.info("called AssetBookingService.deleteAssetBooking");
 		assetBookingDAO.deleteAssetBooking(assetBooking);
 	}
 }

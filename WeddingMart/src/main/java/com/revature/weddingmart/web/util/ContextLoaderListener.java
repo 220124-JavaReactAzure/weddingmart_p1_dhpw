@@ -1,12 +1,14 @@
 package com.revature.weddingmart.web.util;
 
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.weddingmart.daos.AssetBookingDAO;
@@ -45,11 +47,21 @@ import com.revature.weddingmart.web.servlets.users.UserServlet;
 
 @WebListener
 public class ContextLoaderListener implements ServletContextListener {
-	private final Logger logger = LogManager.getRootLogger();
+	private Logger logger;
+	private Handler fh;
 	
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		logger.info("contextInitialized");
+		try {
+			fh = new FileHandler("log.txt", true);
+			Logger.getLogger("").addHandler(fh);
+		    Logger.getLogger("").setLevel(Level.CONFIG);
+		    this.logger = Logger.getLogger("");
+		    logger.info("Initialized logging in ContextLoaderListener");			
+		}
+		catch (Exception e) {
+			
+		}
 		
 		ObjectMapper mapper = new ObjectMapper();
 		
@@ -110,6 +122,8 @@ public class ContextLoaderListener implements ServletContextListener {
 		context.addServlet("MealChoiceServlet", mealChoiceServlet).addMapping("/mealChoice/*");
 		context.addServlet("MealOrderServlet", mealOrderServlet).addMapping("/mealOrder/*");
 		context.addServlet("MealOrderPlusOneServlet", mealOrderPlusOneServlet).addMapping("/mealOrderPlusOne/*");
+		
+		logger.info("contextInitialized");
 	}
 	
 	@Override
