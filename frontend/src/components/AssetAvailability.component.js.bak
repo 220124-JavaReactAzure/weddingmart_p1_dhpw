@@ -75,7 +75,7 @@ export default class AssetAvailabilityComponent extends Component {
 			let address = asset.address;
 			let description = asset.type.description;
 			let key = asset.id.value;
-			assetList.push(<AssetComponent id={id} email={email} name={name} phone={phone} price={price} address={address} description={description} key={key} />);
+			assetList.push(<AssetComponent id={id} email={email} name={name} phone={phone} price={price} address={address} description={this.capitalize(description)} key={key} show_start_date='' show_end_date='' />);
 		})
 		return assetList;
 	}
