@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import com.revature.weddingmart.models.MealOrder;
 import com.revature.weddingmart.util.HibernateUtil;
@@ -15,6 +16,8 @@ public class MealOrderDAO {
 		try {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
+			session.refresh(mealOrder.getAttendee());
+			session.refresh(mealOrder.getMealChoice());
 			session.save(mealOrder);
 			transaction.commit();
 			return mealOrder;
@@ -56,6 +59,8 @@ public class MealOrderDAO {
 		try {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
+			session.refresh(mealOrder.getAttendee());
+			session.refresh(mealOrder.getMealChoice());
 			session.merge(mealOrder);
 			transaction.commit();
 		} catch (HibernateException | IOException e) {
@@ -69,7 +74,10 @@ public class MealOrderDAO {
 		try {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
-			session.delete(mealOrder);
+			String hql = "DELETE FROM MealOrder " + "WHERE id = :meal_id";
+			Query query = session.createQuery(hql);
+			query.setParameter("meal_id", mealOrder.getId());
+			query.executeUpdate();
 			transaction.commit();
 		} catch (HibernateException | IOException e) {
 			e.printStackTrace();
