@@ -8,7 +8,7 @@ export default class AssetBookingComponent extends Component {
     render() {
         return (
             <div>
-			id={this.props.id} email={this.props.email} name={this.props.name} phone={this.props.phone} price={this.props.price} address={this.props.address} description={this.props.description}
+			id={this.props.id} asset_id={this.props.asset_id} wedding_id={this.props.wedding_id} booking_date={this.props.booking_date}
             </div>
         )
     }

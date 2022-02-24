@@ -11,7 +11,8 @@ export default class AssetAvailabilityComponent extends Component {
 		this.state = {
 			weddings: [],
 			assets: [],
-			assetBookings: []
+			assetBookings: [],
+			assetTypes: []
 		};
     }
 	
@@ -37,6 +38,17 @@ export default class AssetAvailabilityComponent extends Component {
                     assetBookings: res
                 })
             });
+		await fetch('http://localhost:8080/WeddingMart/assetType')
+    .then(res => res.json())
+            .then((res) => {
+                this.setState({ 
+                    assetTypes: res
+                })
+            });
+	}
+	
+	capitalize(str) {
+		return str.charAt(0).toUpperCase() + str.slice(1);
 	}
 	
 	renderWeddings() {
@@ -63,7 +75,7 @@ export default class AssetAvailabilityComponent extends Component {
 			let address = asset.address;
 			let description = asset.type.description;
 			let key = asset.id.value;
-			assetList.push(<AssetComponent id={id} email={email} name={name} phone={phone} price={price} address={address} description={description} key={key} />);
+			assetList.push(<AssetComponent id={id} email={email} name={name} phone={phone} price={price} address={address} description={this.capitalize(description)} key={key} />);
 		})
 		return assetList;
 	}
@@ -80,15 +92,27 @@ export default class AssetAvailabilityComponent extends Component {
 		})
 		return assetBookingList;
 	}
+	
+	renderAssetTypes() {
+		const assetTypeList = [];
+		this.state.assetTypes.forEach((assetType) => {
+			let id = assetType.id;
+			let key = assetType.id.value;
+			let description = assetType.description;
+			assetTypeList.push(<option value={id}>{this.capitalize(description)}</option>);
+		});
+		return assetTypeList;
+	}
 
     render() {
         return (
             <div>
-			Weddings: <br/>
+			Find <select> {this.renderAssetTypes()} </select> available between <input type="date"/> and <input type="date"/> <br/>
+			<b>Weddings:</b> <br/>
 			{this.renderWeddings()}
-			Assets: <br/>
+			<b>Assets:</b> <br/>
 			{this.renderAssets()}
-			AssetBookings: <br/>
+			<b>AssetBookings:</b> <br/>
 			{this.renderAssetBookings()}
             </div>
         )

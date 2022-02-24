@@ -9,7 +9,7 @@ export default class WeddingComponent extends Component {
     render() {
         return (
             <div>
-			id={this.props.id} budget={this.props.budget} date={this.props.weddingDate} rsvp={this.props.rsvpByDate}
+			{this.props.id}: {this.props.date} / {this.props.rsvp}, budget={this.props.budget} 
             </div>
         )
     }
