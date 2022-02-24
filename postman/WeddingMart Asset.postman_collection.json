@@ -57,26 +57,6 @@
 			"response": []
 		},
 		{
-			"name": "Delete Asset/N Copy",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/WeddingMart/asset/8",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"WeddingMart",
-						"asset",
-						"8"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Update Asset",
 			"request": {
 				"method": "PUT",
@@ -94,6 +74,26 @@
 					"path": [
 						"WeddingMart",
 						"asset"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Asset/N Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/WeddingMart/asset/8",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WeddingMart",
+						"asset",
+						"8"
 					]
 				}
 			},
