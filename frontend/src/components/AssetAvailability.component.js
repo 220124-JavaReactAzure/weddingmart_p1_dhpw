@@ -156,12 +156,13 @@ export default class AssetAvailabilityComponent extends Component {
 		allAssetList.sort();
 		
 		allAssetList.forEach(asset => {
-			console.log(asset);
 			for (let i=0; i < unavailableAssetList.length; i++) {
-				console.log(unavailableAssetList[i]);
 				if (asset.id == unavailableAssetList[i]) {
 					unavailableAssetList.shift();
 					return;
+				}
+				if (unavailableAssetList[i] < asset.id) {
+					i = unavailableAssetList.length;
 				}
 			}
 			this.state.availableAssets.push(asset);
