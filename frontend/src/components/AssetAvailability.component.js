@@ -134,7 +134,7 @@ export default class AssetAvailabilityComponent extends Component {
 	
 	findAvailableAssets() {
 		let allAssetList = [];
-		let unavailableAssetList = [];
+		let unavailableAssetList = Array();
 		let confirmedAvailableAssetIDList = [];
 		this.state.availableAssets = [];
 
@@ -150,17 +150,18 @@ export default class AssetAvailabilityComponent extends Component {
 			}
 		})
 		
+		unavailableAssetList.sort((a, b) => a-b);
+		
 		allAssetList = this.state.assets;
 		allAssetList.sort();
 		
 		allAssetList.forEach(asset => {
-			for (let i=0; i <= unavailableAssetList.length; i++) {
+			console.log(asset);
+			for (let i=0; i < unavailableAssetList.length; i++) {
+				console.log(unavailableAssetList[i]);
 				if (asset.id == unavailableAssetList[i]) {
 					unavailableAssetList.shift();
 					return;
-				}
-				if (asset.id > unavailableAssetList[i]) {
-					i = unavailableAssetList.length;
 				}
 			}
 			this.state.availableAssets.push(asset);
