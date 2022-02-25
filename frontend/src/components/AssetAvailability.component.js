@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 import WeddingComponent from './Wedding.component';
 import AssetComponent from './Asset.component';
@@ -12,7 +11,10 @@ export default class AssetAvailabilityComponent extends Component {
 			weddings: [],
 			assets: [],
 			assetBookings: [],
-			assetTypes: []
+			assetTypes: [],
+			availableAssets: [],
+			startDate: '1970-01-01',
+			endDate: '1970-01-01'
 		};
     }
 	
@@ -58,7 +60,7 @@ export default class AssetAvailabilityComponent extends Component {
 			let budget = wedding.budget;
 			let weddingDate = wedding.weddingDate;
 			let rsvpByDate = wedding.rsvpByDate;
-			let key = wedding.id.value;
+			let key = wedding.id;
 			weddingList.push(<WeddingComponent id={id} budget={budget} date={weddingDate} rsvp={rsvpByDate} key={key} />);
 		})
 		return weddingList;
@@ -74,7 +76,23 @@ export default class AssetAvailabilityComponent extends Component {
 			let price = asset.price;
 			let address = asset.address;
 			let description = asset.type.description;
-			let key = asset.id.value;
+			let key = asset.id;
+			assetList.push(<AssetComponent id={id} email={email} name={name} phone={phone} price={price} address={address} description={this.capitalize(description)} key={key} />);
+		})
+		return assetList;
+	}
+	
+	renderAvailableAssets() {
+		const assetList = [];
+		this.state.availableAssets.forEach((asset) => {
+			let id = asset.id;
+			let email = asset.email;
+			let name = asset.name;
+			let phone = asset.phone;
+			let price = asset.price;
+			let address = asset.address;
+			let description = asset.type.description;
+			let key = asset.id;
 			assetList.push(<AssetComponent id={id} email={email} name={name} phone={phone} price={price} address={address} description={this.capitalize(description)} key={key} />);
 		})
 		return assetList;
@@ -84,7 +102,7 @@ export default class AssetAvailabilityComponent extends Component {
 		const assetBookingList = [];
 		this.state.assetBookings.forEach((assetBooking) => {
 			let id = assetBooking.id;
-			let key = assetBooking.id.value;
+			let key = assetBooking.id;
 			let asset_id = assetBooking.asset.id;
 			let wedding_id = assetBooking.wedding.id;
 			let booking_date = assetBooking.wedding.weddingDate;
@@ -97,17 +115,66 @@ export default class AssetAvailabilityComponent extends Component {
 		const assetTypeList = [];
 		this.state.assetTypes.forEach((assetType) => {
 			let id = assetType.id;
-			let key = assetType.id.value;
+			let key = assetType.id;
 			let description = assetType.description;
 			assetTypeList.push(<option value={id}>{this.capitalize(description)}</option>);
 		});
 		return assetTypeList;
 	}
+	
+	handleStart = event => {
+		this.setState({ startDate: event.target.value }); };
+	
+	handleEnd = event => {
+		this.setState({ endDate: event.target.value }); };
+		
+	findClicked = event => {
+		this.findAvailableAssets();
+	};
+	
+	findAvailableAssets() {
+		let allAssetList = [];
+		let unavailableAssetList = [];
+		let confirmedAvailableAssetIDList = [];
+		this.state.availableAssets = [];
+
+		this.state.assetBookings.forEach((assetBooking) => {
+			let id = assetBooking.asset.id;
+			let date = new Date( assetBooking.wedding.weddingDate );
+			let start = new Date( this.state.startDate );
+			let end = new Date( this.state.endDate ); 
+			if ( this.state.startDate.localeCompare(assetBooking.wedding.weddingDate) == 0 
+				|| this.state.endDate.localeCompare(assetBooking.wedding.weddingDate) == 0
+				|| ( date > start && date < end ) ) {
+					unavailableAssetList.push(id);
+			}
+		})
+		
+		allAssetList = this.state.assets;
+		allAssetList.sort();
+		
+		allAssetList.forEach(asset => {
+			for (let i=0; i <= unavailableAssetList.length; i++) {
+				if (asset.id == unavailableAssetList[i]) {
+					unavailableAssetList.shift();
+					return;
+				}
+				if (asset.id > unavailableAssetList[i]) {
+					i = unavailableAssetList.length;
+				}
+			}
+			this.state.availableAssets.push(asset);
+		})
+		this.forceUpdate();
+	}
 
     render() {
         return (
             <div>
-			Find <select> {this.renderAssetTypes()} </select> available between <input type="date"/> and <input type="date"/> <br/>
+			Find assets available between <input onChange={this.handleStart} type="date"/> and <input onChange={this.handleEnd} type="date"/> 
+			<input type="submit" value="Find" onClick={this.findClicked} /> <br/>
+			<b>Assets Available in your selected Date range:</b> <br/>
+			{this.renderAvailableAssets()}
 			<b>Weddings:</b> <br/>
 			{this.renderWeddings()}
 			<b>Assets:</b> <br/>

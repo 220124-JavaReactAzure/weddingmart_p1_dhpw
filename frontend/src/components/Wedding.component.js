@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 export default class WeddingComponent extends Component {
     constructor(props) {
@@ -9,7 +8,7 @@ export default class WeddingComponent extends Component {
     render() {
         return (
             <div>
-			{this.props.id}: {this.props.date} / {this.props.rsvp}, budget={this.props.budget} 
+			{this.props.id}: Date {this.props.date} / RSVP by {this.props.rsvp}, ${this.props.budget} 
             </div>
         )
     }

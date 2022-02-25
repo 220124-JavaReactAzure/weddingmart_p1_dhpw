@@ -8,7 +8,7 @@ export default class AssetComponent extends Component {
     render() {
         return (
             <div>
-			{this.props.id}: {this.props.description}: {this.props.name}: {this.props.email}, {this.props.phone}, {this.props.price}, address={this.props.address}
+			{this.props.id}: {this.props.description}: {this.props.name}: Email {this.props.email} or Call {this.props.phone}, ${this.props.price}, located {this.props.address}
             </div>
         )
     }
