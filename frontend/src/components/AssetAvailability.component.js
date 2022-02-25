@@ -158,7 +158,9 @@ export default class AssetAvailabilityComponent extends Component {
 		allAssetList.forEach(asset => {
 			for (let i=0; i < unavailableAssetList.length; i++) {
 				if (asset.id == unavailableAssetList[i]) {
-					unavailableAssetList.shift();
+					while (asset.id == unavailableAssetList[i]) {
+						unavailableAssetList.splice(i, 1);;
+					}
 					return;
 				}
 				if (unavailableAssetList[i] < asset.id) {
