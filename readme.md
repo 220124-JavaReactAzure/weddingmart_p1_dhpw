@@ -6,7 +6,7 @@ An Employee can be marked as a manager, and this could be used to control extra 
 
 An Attendee is linked to a Wedding, can be marked with an rsvp and a plus one rsvp. A MealOrder and MealOrderPlusOne can link an Attendee and their potential plus one with a MealChoice.
 
-A Betrothed is linked a Wedding, which tracks their budget, wedding date, and the date by which they need their Attendees to rsvp.
+A Betrothed is linked to a Wedding, which tracks their budget, wedding date, and the date by which they need their Attendees to rsvp.
 
 Thanks to the way the database is structured a User can be an Employee, a Betrothed on their own wedding, and an Attendee on multiple weddings. Any number of Users can be Betrothed on a wedding, so although WeddingMart has no political position on polyamory the software does support it!
 
@@ -27,8 +27,8 @@ http://hostname/WeddingMart
 - /assetType GET
 - /asset POST GET PUT DELETE
 - /asset/id GET DELETE
-- /asset_booking POST GET PUT
-- /asset_booking/id GET DELETE
+- /assetBooking POST GET PUT
+- /assetBooking/id GET DELETE
 - /attendee POST GET PUT
 - /attendee/id GET DELETE
 - /mealChoice GET
@@ -46,6 +46,7 @@ http://hostname/WeddingMart
 -   [ ] Hibernate 5.4.32.Final
 -   [ ] java.util.logging 8
 -   [ ] Jackson 2.13.1
+-   [ ] React 17.0.2
 -   [ ] Java EE Servlet API (v4.0+)
 -   [ ] Azure SQL 7.4.1.jre8
 -   [ ] Git SCM (on GitHub)
