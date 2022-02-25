@@ -22,10 +22,10 @@ public class Wedding {
 	@Column()
 	private double budget;
 	@JsonFormat(pattern = "yyyy-MM-dd")
-	@Column(name = "wedding_date")
+	@Column(name = "wedding_date", nullable=false)
 	private Date weddingDate;
 	@JsonFormat(pattern = "yyyy-MM-dd")
-	@Column(name = "rsvp_by_date")
+	@Column(name = "rsvp_by_date", nullable=false)
 	private Date rsvpByDate;
 
 	public int getId() {
